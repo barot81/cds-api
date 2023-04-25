@@ -1,3 +1,5 @@
+using MediatR;
+
 namespace Zhealthcare.Service
 {
     public class Program
@@ -12,6 +14,7 @@ namespace Zhealthcare.Service
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddMediatR(typeof(Program));
 
             var app = builder.Build();
 

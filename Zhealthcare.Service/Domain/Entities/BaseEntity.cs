@@ -1,9 +1,11 @@
 ﻿using Microsoft.Azure.CosmosRepository;
+using Microsoft.Azure.CosmosRepository.Attributes;
 using Newtonsoft.Json;
 
 namespace Zhealthcare.Service.Domain.Entities
 {
-    public class BaseEntity: Item
+    [PartitionKeyPath("/partitionKey")]
+    public class BaseEntity: IItem
     {
         /// <summary>
         /// Gets or sets the item's globally unique identifier.
