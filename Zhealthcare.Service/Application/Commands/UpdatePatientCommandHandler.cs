@@ -1,5 +1,6 @@
 ﻿using Mapster;
 using MediatR;
+using Microsoft.Azure.Cosmos.Spatial;
 using Microsoft.Azure.CosmosRepository;
 using Zhealthcare.Service.Domain.Entities;
 
@@ -15,15 +16,11 @@ namespace Zhealthcare.Service.Application.Commands
 
         public async Task<Guid> Handle(UpdatePatientCommand command, CancellationToken cancellationToken)
         {
-            var patient = command.PatientDto.Adapt<Patient>();
-            patient.LastUpdatedTime = DateTime.UtcNow;
-            patient.Type = typeof(Patient).Name;
+            var patient = await _repository.GetAsync(command.Id, command.FacilityId, cancellationToken);
+            var updatedPatient = command.MapPatient(patient);
+            var result = await _repository.UpdateAsync(updatedPatient, false, cancellationToken);
+            return result == null ? Guid.Empty : Guid.Parse(result.Id);
 
-            var result = await _repository.UpdateAsync(patient, cancellationToken: cancellationToken);
-
-            return result == null ? default : Guid.Parse(result.Id);
-            
         }
-
     }
 }

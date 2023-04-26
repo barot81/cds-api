@@ -28,8 +28,8 @@ namespace Zhealthcare.Service
                 options =>
                 {
                     options.CosmosConnectionString = $"AccountEndpoint={cosmosConfig!.EndpointUrl};AccountKey={cosmosConfig!.AuthorizationKey};";
-                    options.ContainerId = cosmosConfig?.Connection?.CollectionName ?? string.Empty;
-                    options.DatabaseId = cosmosConfig?.Connection?.DatabaseName ?? string.Empty;
+                    options.ContainerId = cosmosConfig?.Connections?.CollectionName ?? string.Empty;
+                    options.DatabaseId = cosmosConfig?.Connections?.DatabaseName ?? string.Empty;
                     options.ContainerBuilder.Configure<Patient>(builder =>
                     {
                         builder.WithoutStrictTypeChecking();
