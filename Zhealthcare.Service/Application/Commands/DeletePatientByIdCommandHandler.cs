@@ -15,7 +15,7 @@ namespace Zhealthcare.Service.Application.Commands
         {
             try
             {
-                var patient = await _repository.GetAsync(Id.ToString(),FacilityId, cancellationToken);
+                var patient = await _repository.GetAsync(command.Id.ToString(),command.FacilityId, cancellationToken);
                 await _repository.DeleteAsync(patient, cancellationToken);
                 return true;
             } 
