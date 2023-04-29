@@ -2,7 +2,7 @@
 using Microsoft.Azure.CosmosRepository;
 using Zhealthcare.Service.Domain.Entities;
 
-namespace Zhealthcare.Service.Application.Commands
+namespace Zhealthcare.Service.Application.Patients.Commands
 {
     public class DeletePatientByIdCommandHandler : IRequestHandler<DeletePatientByIdCommand, bool>
     {
@@ -15,15 +15,15 @@ namespace Zhealthcare.Service.Application.Commands
         {
             try
             {
-                var patient = await _repository.GetAsync(command.Id.ToString(),command.FacilityId, cancellationToken);
+                var patient = await _repository.GetAsync(command.Id.ToString(), command.FacilityId, cancellationToken);
                 await _repository.DeleteAsync(patient, cancellationToken);
                 return true;
-            } 
-            catch(Exception)
+            }
+            catch (Exception)
             {
                 return false;
             }
-            
+
         }
     }
 }

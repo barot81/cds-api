@@ -1,12 +1,12 @@
 ﻿using MediatR;
-using Zhealthcare.Service.Application.Models;
+using Zhealthcare.Service.Application.Patients.Models;
 using Zhealthcare.Service.Domain.Entities;
 
-namespace Zhealthcare.Service.Application.Commands
+namespace Zhealthcare.Service.Application.Patients.Commands
 {
     public record UpdatePatientCommand(string Id, string FacilityId, PatientUpdateDto PatientDto) : IRequest<Guid>
-    { 
-    
+    {
+
         public Patient MapPatient(Patient patient)
         {
             patient.IsActive = PatientDto.IsActive;

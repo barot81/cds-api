@@ -1,7 +1,11 @@
-﻿namespace Zhealthcare.Service.Application.Models
+﻿namespace Zhealthcare.Service.Application.Patients.Models
 {
-    public class PatientUpdateDto
+    public class PatientDto
     {
+        public Guid Id { get; set; }
+        public string FacilityId { get; set; } = string.Empty;
+        public string RoomId { get; set; } = string.Empty;
+        public long AccountNo { get; set; }
         public bool IsActive { get; set; }
         public string FirstName { get; set; } = string.Empty;
         public string LastName { get; set; } = string.Empty;

@@ -1,22 +1,23 @@
-﻿namespace Zhealthcare.Service.Domain.Entities
+﻿namespace Zhealthcare.Service.Application.PatientFindings.Models
 {
-    public class PatientFinding : BaseEntity
+    public class PatientFindingDto
     {
-        public Guid PatientId { get; set; }
+        public Guid Id { get; set; }
+
         public string QueryType { get; set; } = String.Empty;
         public string CdsName { get; set; } = String.Empty;
         public DateTime QueryDate { get; set; }
         public string QueryDiagnosis { get; set; } = String.Empty;
         public string PhysicianName { get; set; } = String.Empty;
         public string ClinicalIndicator { get; set; } = String.Empty;
-        public double CurrentDRG { get; set; } 
+        public double CurrentDRG { get; set; }
         public double InitialWeight { get; set; }
         public double Gmlos { get; set; }
 
         public double ExpectedDRG { get; set; }
         public double ExpectedWeight { get; set; }
-        public double ExpectedGMLOS { get; set; }
-        public DateTime ResponseDate { get; set; }
+        public string ExpectedGMLOS { get; set; } = String.Empty;
+        public string ResponseDate { get; set; } = String.Empty;
         public string ResponseType { get; set; } = String.Empty;
         public string ResponseComment { get; set; } = String.Empty;
         public string FollowupComment { get; set; } = String.Empty;
@@ -27,7 +28,5 @@
         public string Status { get; set; } = String.Empty;
         public string ClinicalSummary { get; set; } = String.Empty;
         public string Comments { get; set; } = String.Empty;
-        public DateTime CreatedTime { get; set; }
-        
     }
 }

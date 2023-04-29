@@ -3,7 +3,7 @@ using MediatR;
 using Microsoft.Azure.CosmosRepository;
 using Zhealthcare.Service.Domain.Entities;
 
-namespace Zhealthcare.Service.Application.Commands
+namespace Zhealthcare.Service.Application.Patients.Commands
 {
     public class CreatePatientCommandHandler : IRequestHandler<CreatePatientCommand, Patient>
     {
@@ -17,7 +17,7 @@ namespace Zhealthcare.Service.Application.Commands
             var patient = command.PatientDto.Adapt<Patient>();
             patient.CreatedTime = DateTime.UtcNow;
             patient.PartitionKey = command.FacilityId;
-            patient.Type = typeof(Patient).Name;
+            patient.Type = nameof(Patient);
 
             return await _repository.CreateAsync(patient, cancellationToken);
         }

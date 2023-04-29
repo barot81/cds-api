@@ -1,12 +1,12 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Zhealthcare.Service.Application.Commands;
-using Zhealthcare.Service.Application.Models;
-using Zhealthcare.Service.Application.Queries;
+using Zhealthcare.Service.Application.Patients.Commands;
+using Zhealthcare.Service.Application.Patients.Models;
+using Zhealthcare.Service.Application.Patients.Queries;
 
 namespace Zhealthcare.Service.Controllers
 {
-    [Route("api/")]
+    [Route("api/Facilities/")]
     [ApiController]
 
     public class PatientsController : ControllerBase
@@ -19,34 +19,34 @@ namespace Zhealthcare.Service.Controllers
         
 
         // URL - https://localhost:44378/api/Patient type POST
-        [HttpPost("Facilities/{FacilityId}/patients")]
+        [HttpPost("{FacilityId}/patients")]
         public async Task<IActionResult> Create(string FacilityId, PatientDto PatientInfo)
         {
             return Ok(await _mediator.Send(new CreatePatientCommand(FacilityId, PatientInfo)));
         }
 
-        [HttpGet("Facilities/{FacilityId}/patients")]
+        [HttpGet("{FacilityId}/patients")]
         public async Task<IActionResult> GetAll(string FacilityId)
         {
-            return Ok(await _mediator.Send(new GetAllPatientQuery(FacilityId)));
+            return Ok(await _mediator.Send(new GetAllPatientsQuery(FacilityId)));
         }
 
-        [HttpGet("Facilities/{FacilityId}/patients/{id}")]
+        [HttpGet("{FacilityId}/patients/{id}")]
         public async Task<IActionResult> GetById(string FacilityId, Guid id)
         {
-            return Ok(await _mediator.Send(new GetPatientByIdQuery(FacilityId,id)));
+            return Ok(await _mediator.Send(new GetPatientsByIdQuery(FacilityId,id)));
         }
 
-        [HttpPut("Facilities/{FacilityId}/patients/{id}")]
+        [HttpPut("{FacilityId}/patients/{id}")]
         public async Task<IActionResult> Update(Guid Id, PatientUpdateDto updatedPatient, string FacilityId)
         {
             return Ok(await _mediator.Send(new UpdatePatientCommand(Id.ToString(), FacilityId, updatedPatient)));
         }
 
-        [HttpDelete("Facilities/{FacilityId}/patients/{id}")]
+        [HttpDelete("{FacilityId}/patients/{id}")]
         public async Task<IActionResult> Delete(string FacilityId, Guid id, CancellationToken cancellationToken)
         {
-            return Ok(await _mediator.Send(new DeletePatientByIdCommand(id,FacilityId), cancellationToken));
+            return Ok(await _mediator.Send(new DeletePatientByIdCommand(FacilityId, id), cancellationToken));
         }
     }
 }

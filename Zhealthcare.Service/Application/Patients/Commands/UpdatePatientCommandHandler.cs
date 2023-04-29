@@ -4,7 +4,7 @@ using Microsoft.Azure.Cosmos.Spatial;
 using Microsoft.Azure.CosmosRepository;
 using Zhealthcare.Service.Domain.Entities;
 
-namespace Zhealthcare.Service.Application.Commands
+namespace Zhealthcare.Service.Application.Patients.Commands
 {
 
     public class UpdatePatientCommandHandler : IRequestHandler<UpdatePatientCommand, Guid>
