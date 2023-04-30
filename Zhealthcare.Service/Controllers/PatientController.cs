@@ -38,7 +38,7 @@ namespace Zhealthcare.Service.Controllers
         }
 
         [HttpPut("{FacilityId}/patients/{id}")]
-        public async Task<IActionResult> Update(Guid Id, PatientUpdateDto updatedPatient, string FacilityId)
+        public async Task<IActionResult> Update(string FacilityId, Guid Id, [FromBody] PatientUpdateDto updatedPatient)
         {
             return Ok(await _mediator.Send(new UpdatePatientCommand(Id.ToString(), FacilityId, updatedPatient)));
         }

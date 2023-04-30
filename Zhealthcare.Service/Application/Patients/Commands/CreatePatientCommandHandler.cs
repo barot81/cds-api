@@ -15,6 +15,7 @@ namespace Zhealthcare.Service.Application.Patients.Commands
         public async Task<Patient> Handle(CreatePatientCommand command, CancellationToken cancellationToken)
         {
             var patient = command.PatientDto.Adapt<Patient>();
+            patient.Id = Guid.NewGuid().ToString();
             patient.CreatedTime = DateTime.UtcNow;
             patient.PartitionKey = command.FacilityId;
             patient.Type = nameof(Patient);
