@@ -6,7 +6,6 @@ namespace Zhealthcare.Service.Application.Patients.Commands
 {
     public record UpdatePatientCommand(string Id, string FacilityId, PatientUpdateDto PatientDto) : IRequest<Guid>
     {
-
         public Patient MapPatient(Patient patient)
         {
             patient.IsActive = PatientDto.IsActive;
@@ -17,12 +16,13 @@ namespace Zhealthcare.Service.Application.Patients.Commands
             patient.Sex = PatientDto.Sex;
             patient.HealthPlanName = PatientDto.HealthPlanName;
             patient.QueryStatus = PatientDto.QueryStatus;
+            patient.QueryDate = PatientDto.QueryDate;
             patient.Los = PatientDto.Los;
             patient.FinancialClass = PatientDto.FinancialClass;
             patient.Mrn = PatientDto.Mrn;
-            patient.AdmissioinDate = PatientDto.AdmissioinDate;
-            patient.ReimbursementType = PatientDto.ReimbursementType;
+            patient.AdmissionDate = PatientDto.AdmissionDate;
             patient.DischargeDate = PatientDto.DischargeDate;
+            patient.ReimbursementType = PatientDto.ReimbursementType;
             patient.Concurrent_postDC = PatientDto.Concurrent_postDC;
             patient.SecondaryInsurance = PatientDto.SecondaryInsurance;
             patient.Contracted = PatientDto.Contracted;
@@ -31,6 +31,7 @@ namespace Zhealthcare.Service.Application.Patients.Commands
             patient.StatusClass = PatientDto.StatusClass;
             patient.LastUpdatedTime = DateTime.UtcNow;
             patient.Type = typeof(Patient).Name;
+            patient.GeneralComment = PatientDto.GeneralComment;
             return patient;
         }
     }

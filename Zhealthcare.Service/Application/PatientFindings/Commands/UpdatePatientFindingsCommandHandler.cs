@@ -14,8 +14,7 @@ namespace Zhealthcare.Service.Application.Patients.Commands
 
         public async Task<Guid> Handle(UpdatePatientFindingsCommand command, CancellationToken cancellationToken)
         {
-            var patientFinding = await _repository.GetAsync(command.FindingId.ToString(), command.FacilityId, cancellationToken);
-            var updatedPatientFinding = command.MapPatientFinding(patientFinding);
+            var updatedPatientFinding = command.MapPatientFinding();
             var result = await _repository.UpdateAsync(updatedPatientFinding, false, cancellationToken);
             return result == null ? Guid.Empty : Guid.Parse(result.Id);
         }

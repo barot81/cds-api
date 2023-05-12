@@ -2,12 +2,11 @@
 using Microsoft.AspNetCore.Mvc;
 using Zhealthcare.Service.Application.PatientFindings.Models;
 using Zhealthcare.Service.Application.Patients.Commands;
-using Zhealthcare.Service.Application.Patients.Models;
 using Zhealthcare.Service.Application.Patients.Queries;
 
 namespace Zhealthcare.Service.Controllers
 {
-    [Route("api/Facilities/")]
+    [Route("api/")]
     [ApiController]
 
     public class PatientsFindingController : ControllerBase
@@ -18,7 +17,7 @@ namespace Zhealthcare.Service.Controllers
         
 
         [HttpPost("{FacilityId}/patients/{PatientId}/findings")]
-        public async Task<IActionResult> Create(string FacilityId,Guid PatientId, PatientFindingDto PatientFindingInfo)
+        public async Task<IActionResult> Create(string FacilityId,Guid PatientId,[FromBody] PatientFindingDto PatientFindingInfo)
         => Ok(await _mediator.Send(new CreatePatientFindingCommand(FacilityId, PatientId, PatientFindingInfo)));
         
 

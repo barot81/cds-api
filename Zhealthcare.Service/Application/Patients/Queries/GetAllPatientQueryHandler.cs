@@ -12,7 +12,7 @@ namespace Zhealthcare.Service.Application.Patients.Queries
 
 
         public async Task<IEnumerable<Patient>> Handle(GetAllPatientsQuery query, CancellationToken cancellationToken)
-        => await _repository.GetAsync(x => x.PartitionKey == query.Facility, cancellationToken);
+        => await _repository.GetAsync(x => x.Type == nameof(Patient) && x.PartitionKey == query.Facility, cancellationToken);
 
     }
 

@@ -6,7 +6,7 @@ using Zhealthcare.Service.Application.Patients.Queries;
 
 namespace Zhealthcare.Service.Controllers
 {
-    [Route("api/Facilities/")]
+    [Route("api/")]
     [ApiController]
 
     public class PatientsController : ControllerBase

@@ -18,6 +18,9 @@ namespace Zhealthcare.Service.Application.Patients.Commands
             patientFinding.CreatedTime = DateTime.UtcNow;
             patientFinding.PartitionKey = command.FacilityId;
             patientFinding.Type = typeof(PatientFinding).Name;
+            patientFinding.Id = Guid.NewGuid().ToString();
+            patientFinding.FacilityId = command.FacilityId;
+            patientFinding.PatientId = command.PatientId;
 
             return await _repository.CreateAsync(patientFinding, cancellationToken);
         }

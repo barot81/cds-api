@@ -21,6 +21,7 @@
         public string ReimbursementType { get; set; } = string.Empty;
         public string DischargeDate { get; set; } = string.Empty;
         public string Concurrent_postDC { get; set; } = string.Empty;
+        public string PrimaryInsurance { get; set; } = string.Empty;
         public string SecondaryInsurance { get; set; } = string.Empty;
         public bool Contracted { get; set; }
         public string PatientClass { get; set; } = string.Empty;
