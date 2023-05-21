@@ -18,48 +18,23 @@ namespace Zhealthcare.Service.Application.Patients.Queries
 
         public async Task<PageResponseModel> Handle(GetAllPatientsQueriesRequest request, CancellationToken cancellationToken)
         {
-            var filterQuery = GetQueryString(request.FilterModel.Filters);
-            var parameterizedQuery = new QueryDefinition(
-                "SELECT c.id FROM c WHERE c.partitionKey = @partitionKey and c.entityName = @type"
-                + filterQuery
-                )
-                .WithParameter("@partitionKey", request.FacilityId)
-                .WithParameter("@type", nameof(Patient))
-                .WithParameter("@statuses", string.Join("','",request.FilterModel?.Filters?.Status ?? Array.Empty<string>()))
-                .WithParameter("@queryStatuses", string.Join("','", request.FilterModel?.Filters?.QueryStatus ?? Array.Empty<string>()))
-                .WithParameter("@admissionStartDate", request.FilterModel?.Filters?.AdmissionStartDate)
-                .WithParameter("@admissionEndDate", request.FilterModel?.Filters?.AdmissionEndDate)
-                .WithParameter("@dischargeStartDate", request.FilterModel?.Filters?.DischargeStartDate)
-                .WithParameter("@dischargeEndDate", request.FilterModel?.Filters?.DischargeEndDate);
+            QueryDefinition countQuery = request.GetQueryDefination("c.id");
+            var countResult = await _patientRepository.GetByQueryAsync(countQuery, cancellationToken);
 
-                 var countResult = await _patientRepository.GetByQueryAsync(parameterizedQuery, cancellationToken);
-          
-            var data = await _patientRepository.QueryAsync(new PatientFilterSpecification(request.FacilityId, request.FilterModel), cancellationToken);
+            QueryDefinition getAllQuery = request.GetQueryDefination("*", true, true);
+            
+            var data = await _patientRepository.GetByQueryAsync(getAllQuery, cancellationToken);
             return new PageResponseModel
             {
-                Result = data.Items.AsEnumerable(),
+                Result = data.AsEnumerable(),
                 Count = countResult.Count(),
                 CurrentPage = (request.FilterModel.Start / request.FilterModel.PageSize) + 1
             };
         }
 
-        private string GetQueryString(PatientFilter? filters)
-        {
-            var filterQuery = "";
-            if (filters == null)
-                return "";
-            if (filters.Status != null)
-                filterQuery = " AND ARRAY_CONTAINS(['@statuses'], c.status)";
-            if (filters.QueryStatus != null)
-                filterQuery = " AND ARRAY_CONTAINS(['@queryStatuses'], c.queryStatus)";
-            if (filters.AdmissionStartDate != null && filters.AdmissionEndDate != null)
-                filterQuery = " AND c.admissionDate >= @admissionStartDate &&  c.admissionDate <=  @admissionEndDate";
-            if (filters.DischargeStartDate != null && filters.DischargeEndDate != null)
-                filterQuery = " AND c.dischargeDate >= @dischargeStartDate &&  c.dischargeDate <=  @dischargeEndDate";
+        
 
-            return filterQuery;
-        }
-
+        
         public Func<Patient, bool> GetFilters(PatientFilter? filters)
         {
             List<Func<Patient, bool>> patientPredicate = new();
