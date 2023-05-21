@@ -1,4 +1,6 @@
-﻿namespace Zhealthcare.Service.Domain.Entities
+﻿using Zhealthcare.Service.Models;
+
+namespace Zhealthcare.Service.Domain.Entities
 {
     public class Patient : BaseEntity
     {
@@ -33,6 +35,26 @@
         public DateTime CreatedTime { get; set; }
         public string LastUpdatedBy { get; set; } = string.Empty;
         public DateTime LastUpdatedTime { get; set; }
-        
+
+        public bool ApplyFilter(PatientFilter patientFilter)
+        {
+            var result = true;
+            if (patientFilter == null) return true;
+            if (patientFilter.Status != null)
+                result = patientFilter.Status.Contains(Status);
+            if (patientFilter.QueryStatus != null)
+                result = result && patientFilter.QueryStatus.Contains(QueryStatus);
+            DateTime? admStartDate = patientFilter?.AdmissionStartDate;
+            DateTime? admEndDate = patientFilter?.AdmissionEndDate;
+            if (admStartDate != null && admEndDate != null)
+                 result = result && AdmissionDate >= admStartDate && AdmissionDate <= admEndDate;
+
+            DateTime? disStartDate = patientFilter?.DischargeStartDate;
+            DateTime? disEndDate = patientFilter?.DischargeEndDate;
+            if (disStartDate != null && disEndDate != null)
+                result = result && DischargeDate >= disStartDate && DischargeDate <= disEndDate;
+            return result;
+        }
+
     }
 }
