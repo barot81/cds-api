@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Zhealthcare.Service.Application.Patients.Commands;
 using Zhealthcare.Service.Application.Patients.Models;
 using Zhealthcare.Service.Application.Patients.Queries;
+using Zhealthcare.Service.Models;
 
 namespace Zhealthcare.Service.Controllers
 {
@@ -11,7 +12,6 @@ namespace Zhealthcare.Service.Controllers
 
     public class PatientsController : ControllerBase
     {
-
 
         private readonly IMediator _mediator;
         public PatientsController(IMediator mediator)
@@ -29,6 +29,12 @@ namespace Zhealthcare.Service.Controllers
         public async Task<IActionResult> GetAll(string FacilityId)
         {
             return Ok(await _mediator.Send(new GetAllPatientsQuery(FacilityId)));
+        }
+
+        [HttpGet("{FacilityId}/patientsInfo")]
+        public async Task<IActionResult> GetPatientIndo(string FacilityId, [FromQuery] PageFilterModel pageFilterModel)
+        {
+            return Ok(await _mediator.Send(new GetAllPatientsQueriesRequest(FacilityId, pageFilterModel)));
         }
 
         [HttpGet("{FacilityId}/patients/{id}")]

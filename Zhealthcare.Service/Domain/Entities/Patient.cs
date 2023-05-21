@@ -12,9 +12,11 @@
         public int Age { get; set; }
         public string Sex { get; set; } = string.Empty;
         public string HealthPlanName { get; set; } = string.Empty;
+        public string Status { get; set; } = String.Empty;
+
         public string QueryStatus { get; set; } = string.Empty;
         public DateTime QueryDate { get; set; }
-        public int Los { get; set; }
+        public double Los { get; set; }
         public string FinancialClass { get; set; } = string.Empty;
         public string Mrn { get; set; } = string.Empty;
         public DateTime AdmissionDate { get; set; }
@@ -31,7 +33,6 @@
         public DateTime CreatedTime { get; set; }
         public string LastUpdatedBy { get; set; } = string.Empty;
         public DateTime LastUpdatedTime { get; set; }
-        public string StatusClass { get; set; } = String.Empty;
-
+        
     }
 }

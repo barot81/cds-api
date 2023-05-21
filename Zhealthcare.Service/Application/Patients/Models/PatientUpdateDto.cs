@@ -25,7 +25,7 @@ namespace Zhealthcare.Service.Application.Patients.Models
         public string PatientClass { get; set; } = string.Empty;
         public DateTime QueryDate { get; set; }
         public string Pdx { get; set; } = string.Empty;
-        public string StatusClass { get; set; } = string.Empty;
+        public string Status { get; set; } = string.Empty;
 
         public GeneralComment GeneralComment { get; set; } = new GeneralComment();
     }
