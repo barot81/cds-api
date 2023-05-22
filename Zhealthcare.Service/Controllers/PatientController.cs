@@ -32,7 +32,7 @@ namespace Zhealthcare.Service.Controllers
         }
 
         [HttpGet("{FacilityId}/patientsInfo")]
-        public async Task<IActionResult> GetPatientIndo(string FacilityId, [FromQuery] PageFilterModel pageFilterModel)
+        public async Task<IActionResult> GetPatientInfo(string FacilityId, [FromQuery] PageFilterModel pageFilterModel)
         {
             return Ok(await _mediator.Send(new GetAllPatientsQueriesRequest(FacilityId, pageFilterModel)));
         }

@@ -17,7 +17,7 @@ namespace Zhealthcare.Service.Application.Patients.Queries
             var sortingQuery = applySorting ? SortingString(FilterModel.Order) : "";
             var paginationQuery = applyPagination ? PaginationString : "";
             var parameterizedQuery = new QueryDefinition(
-                "SELECT " + selectClause + " FROM c WHERE c.partitionKey = @partitionKey and c.entityName = @type"
+                "SELECT " + selectClause + " FROM c WHERE c.partitionKey = @partitionKey AND c.entityName = @type"
                 + filterQuery
                 + sortingQuery
                 + paginationQuery
@@ -45,9 +45,9 @@ namespace Zhealthcare.Service.Application.Patients.Queries
             if (filters.QueryStatus != null)
                 filterQuery = " AND ARRAY_CONTAINS([@queryStatuses], c.queryStatus)";
             if (filters.AdmissionStartDate != null && filters.AdmissionEndDate != null)
-                filterQuery = " AND c.admissionDate >= @admissionStartDate &&  c.admissionDate <=  @admissionEndDate";
+                filterQuery = " AND c.admissionDate >= @admissionStartDate AND c.admissionDate <=  @admissionEndDate";
             if (filters.DischargeStartDate != null && filters.DischargeEndDate != null)
-                filterQuery = " AND c.dischargeDate >= @dischargeStartDate &&  c.dischargeDate <=  @dischargeEndDate";
+                filterQuery = " AND c.dischargeDate >= @dischargeStartDate AND c.dischargeDate <=  @dischargeEndDate";
             return filterQuery;
         }
 
