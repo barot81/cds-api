@@ -14,17 +14,16 @@ namespace Zhealthcare.Service.Application.Patients.Queries
         {
             if (string.IsNullOrEmpty(searchTxt))
                 return "";
-            searchTxt = searchTxt.ToLower();
-            return $" AND (LOWER(c.firstName) like '%{searchTxt}%'" +
-                $" OR LOWER(c.lastName) like '%{searchTxt}%'" +
-                $" OR LOWER(ToString(c.accountNo)) like '%{searchTxt}%'" +
-                $" OR LOWER(c.roomId) like '%{searchTxt}%'" +
-                $" OR LOWER(c.cds) like '%{searchTxt}%'" +
-                $" OR LOWER(c.healthPlanName) like '%{searchTxt}%'" +
-                $" OR LOWER(c.status) like '%{searchTxt}%'" +
-                $" OR LOWER(c.queryStatus) like '%{searchTxt}%'" +
-                $" OR LOWER(c.pdx) like '%{searchTxt}%'" +
-                $" OR LOWER(c.generalComment.comments) like '%{searchTxt}%')";
+            return $" AND (LOWER(c.firstName) like @searchQuery" +
+                $" OR LOWER(c.lastName) like @searchQuery" +
+                $" OR LOWER(ToString(c.accountNo)) like @searchQuery" +
+                $" OR LOWER(c.roomId) like @searchQuery" +
+                $" OR LOWER(c.cds) like @searchQuery" +
+                $" OR LOWER(c.healthPlanName) like @searchQuery" +
+                $" OR LOWER(c.status) like @searchQuery" +
+                $" OR LOWER(c.queryStatus) like @searchQuery" +
+                $" OR LOWER(c.pdx) like @searchQuery" +
+                $" OR LOWER(c.generalComment.comments) like @searchQuery)";
         }
         public QueryDefinition GetQueryDefination(string selectClause, bool applySorting = false, bool applyPagination = false)
         {
@@ -46,6 +45,7 @@ namespace Zhealthcare.Service.Application.Patients.Queries
                 .WithParameter("@admissionEndDate", FilterModel?.Filters?.AdmissionEndDate)
                 .WithParameter("@dischargeStartDate", FilterModel?.Filters?.DischargeStartDate)
                 .WithParameter("@dischargeEndDate", FilterModel?.Filters?.DischargeEndDate)
+                .WithParameter("@searchQuery", $"%{FilterModel?.SearchQuery.ToLower()}%")
                 .WithParameter("@sortBy", FilterModel?.SortBy)
                 .WithParameter("@offset", FilterModel?.Start == 0 ? 0 : (FilterModel?.Start - 1))
                 .WithParameter("@pageSize", FilterModel?.PageSize);
