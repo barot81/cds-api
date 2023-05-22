@@ -6,12 +6,28 @@ using Zhealthcare.Service.Models;
 
 namespace Zhealthcare.Service.Application.Patients.Queries
 {
-    public record GetAllPatientsQueriesRequest(string FacilityId, PageFilterModel FilterModel) : IRequest<PageResponseModel> 
+    public record GetAllPatientsQueriesRequest(string FacilityId, PageFilterModel FilterModel) : IRequest<PageResponseModel>
     {
         private static string SortingString(int Order) => $" Order By c['@sortBy'] {(Order == 1 ? "ASC" : "DESC")}";
 
         private static readonly string PaginationString = " OFFSET @offset LIMIT @pageSize";
-        public QueryDefinition GetQueryDefination(string selectClause, bool applySorting= false, bool applyPagination = false)
+        private static string SearchString(string searchTxt)
+        {
+            if (string.IsNullOrEmpty(searchTxt))
+                return "";
+            searchTxt = searchTxt.ToLower();
+            return $" AND (LOWER(c.firstName) like '%{searchTxt}%'" +
+                $" OR LOWER(c.lastName) like '%{searchTxt}%'" +
+                $" OR LOWER(ToString(c.accountNo)) like '%{searchTxt}%'" +
+                $" OR LOWER(c.roomId) like '%{searchTxt}%'" +
+                $" OR LOWER(c.cds) like '%{searchTxt}%'" +
+                $" OR LOWER(c.healthPlanName) like '%{searchTxt}%'" +
+                $" OR LOWER(c.status) like '%{searchTxt}%'" +
+                $" OR LOWER(c.queryStatus) like '%{searchTxt}%'" +
+                $" OR LOWER(c.pdx) like '%{searchTxt}%'" +
+                $" OR LOWER(c.generalComment.comments) like '%{searchTxt}%')";
+        }
+        public QueryDefinition GetQueryDefination(string selectClause, bool applySorting = false, bool applyPagination = false)
         {
             var filterQuery = GetQueryString(FilterModel.Filters);
             var sortingQuery = applySorting ? SortingString(FilterModel.Order) : "";
@@ -19,6 +35,7 @@ namespace Zhealthcare.Service.Application.Patients.Queries
             var parameterizedQuery = new QueryDefinition(
                 "SELECT " + selectClause + " FROM c WHERE c.partitionKey = @partitionKey AND c.entityName = @type"
                 + filterQuery
+                + SearchString(FilterModel.SearchQuery)
                 + sortingQuery
                 + paginationQuery
                 )
@@ -31,7 +48,7 @@ namespace Zhealthcare.Service.Application.Patients.Queries
                 .WithParameter("@dischargeStartDate", FilterModel?.Filters?.DischargeStartDate)
                 .WithParameter("@dischargeEndDate", FilterModel?.Filters?.DischargeEndDate)
                 .WithParameter("@sortBy", FilterModel?.SortBy)
-                .WithParameter("@offset", FilterModel?.Start == 0 ? 0 : (FilterModel?.Start - 1) )
+                .WithParameter("@offset", FilterModel?.Start == 0 ? 0 : (FilterModel?.Start - 1))
                 .WithParameter("@pageSize", FilterModel?.PageSize);
             return parameterizedQuery;
         }
@@ -50,8 +67,6 @@ namespace Zhealthcare.Service.Application.Patients.Queries
                 filterQuery = " AND c.dischargeDate >= @dischargeStartDate AND c.dischargeDate <=  @dischargeEndDate";
             return filterQuery;
         }
-
-          
 
     }
 
