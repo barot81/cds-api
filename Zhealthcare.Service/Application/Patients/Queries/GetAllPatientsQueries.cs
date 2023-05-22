@@ -1,5 +1,4 @@
 ﻿using MediatR;
-using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.Azure.Cosmos;
 using Zhealthcare.Service.Domain.Entities;
 using Zhealthcare.Service.Models;

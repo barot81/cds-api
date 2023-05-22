@@ -1,9 +1,6 @@
-﻿using Exxat.Meta.Infrastructure.CosmosDb;
-using MediatR;
+﻿using MediatR;
 using Microsoft.Azure.Cosmos;
 using Microsoft.Azure.CosmosRepository;
-using System.Diagnostics.Metrics;
-using System.Linq.Expressions;
 using Zhealthcare.Service.Domain.Entities;
 using Zhealthcare.Service.Models;
 

@@ -1,6 +1,4 @@
-﻿using Mapster;
-using MediatR;
-using Microsoft.Azure.Cosmos.Spatial;
+﻿using MediatR;
 using Microsoft.Azure.CosmosRepository;
 using Zhealthcare.Service.Domain.Entities;
 
