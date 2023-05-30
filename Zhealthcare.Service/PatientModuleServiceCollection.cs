@@ -1,12 +1,14 @@
 ﻿using Exxat.SyncJobs.RoleAccessJob.ServiceCollectionExntesion;
+using Mapster;
 using MediatR;
 using Zhealthcare.Service.Domain.Entities;
+using Zhealthcare.Service.Domain.Entities.Drg;
 
 namespace Zhealthcare.Service
 {
     public static class PatientModuleServiceCollection
     {
-        internal static IServiceCollection AddPatientModule(
+        public static IServiceCollection AddPatientModule(
             this IServiceCollection services,
             IConfiguration config)
         => services
@@ -28,10 +30,20 @@ namespace Zhealthcare.Service
                 options =>
                 {
                     options.CosmosConnectionString = $"AccountEndpoint={cosmosConfig!.EndpointUrl};AccountKey={cosmosConfig!.AuthorizationKey};";
-                    options.ContainerId = cosmosConfig?.Connections?.CollectionName ?? string.Empty;
-                    options.DatabaseId = cosmosConfig?.Connections?.DatabaseName ?? string.Empty;
-                    options.ContainerBuilder.Configure<Patient>(builder =>
+                    options.DatabaseId = cosmosConfig?.Connections?["Patients"].DatabaseName ?? string.Empty;
+                    options.ContainerId = cosmosConfig?.Connections?["Patients"].CollectionName ?? string.Empty;
+                    options.ContainerBuilder
+                    .Configure<Patient>(builder => 
                     {
+                        builder.WithoutStrictTypeChecking();
+                    })
+                    .Configure<PatientFinding>(builder =>
+                    {
+                        builder.WithoutStrictTypeChecking();
+                    })
+                    .Configure<Lookup>(builder =>
+                    {
+                        builder.WithContainer(cosmosConfig?.Connections?["Lookups"].CollectionName ?? string.Empty);
                         builder.WithoutStrictTypeChecking();
                     });
                 });

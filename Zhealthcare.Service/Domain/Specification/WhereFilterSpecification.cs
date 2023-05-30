@@ -26,7 +26,7 @@ namespace Exxat.Meta.Infrastructure.CosmosDb
             {
                 var statusFilter = filters?.Status;
                 if (statusFilter != null && statusFilter.Any())
-                    Query.Where(x => statusFilter.Contains(x.Status));
+                    Query.Where(x => statusFilter.Contains(x.ReviewStatus));
 
                 var queryStatusFilter = filters?.QueryStatus;
                 if (queryStatusFilter != null && queryStatusFilter.Any())
@@ -35,7 +35,7 @@ namespace Exxat.Meta.Infrastructure.CosmosDb
                 DateTime? admStartDate = filters?.AdmissionStartDate;
                 DateTime? admEndDate = filters?.AdmissionEndDate;
                 if (admStartDate != null && admEndDate != null)
-                    Query.Where(x => x.AdmissionDate >= admStartDate && x.AdmissionDate <= admEndDate);
+                    Query.Where(x => x.AdmitDate >= admStartDate && x.AdmitDate <= admEndDate);
 
                 DateTime? disStartDate = filters?.DischargeStartDate;
                 DateTime? disEndDate = filters?.DischargeEndDate;
@@ -60,9 +60,9 @@ namespace Exxat.Meta.Infrastructure.CosmosDb
                 if (prop != null)
                 {
                     if (Order == 1)
-                        Query.Where(x => prop.GetValue(x) != null).OrderBy(x => prop.GetValue(x) ?? x.FirstName);
+                        Query.Where(x => prop.GetValue(x) != null).OrderBy(x => prop.GetValue(x) ?? x.PatientName);
                     else
-                        Query.Where(x => prop.GetValue(x) != null).OrderByDescending(x => prop.GetValue(x) ?? x.FirstName);
+                        Query.Where(x => prop.GetValue(x) != null).OrderByDescending(x => prop.GetValue(x) ?? x.PatientName);
                 }
             }
             return Query;

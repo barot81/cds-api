@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 namespace Zhealthcare.Service.Domain.Entities
 {
     [PartitionKeyPath("/partitionKey")]
-    public class BaseEntity: IItem
+    public class BaseEntity: IItem  
     {
         /// <summary>
         /// Gets or sets the item's globally unique identifier.
@@ -26,4 +26,5 @@ namespace Zhealthcare.Service.Domain.Entities
         public virtual string PartitionKey { get; set; } = string.Empty;
 
     }
+
 }

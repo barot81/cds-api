@@ -39,7 +39,7 @@ namespace Zhealthcare.Service.Application.Patients.Queries
             {
                 var statusFilter = filters?.Status;
                 if (statusFilter != null && statusFilter.Any())
-                    patientPredicate.Add(x => statusFilter.Contains(x.Status));
+                    patientPredicate.Add(x => statusFilter.Contains(x.ReviewStatus));
 
                 var queryStatusFilter = filters?.QueryStatus;
                 if (queryStatusFilter != null && queryStatusFilter.Any())
@@ -48,7 +48,7 @@ namespace Zhealthcare.Service.Application.Patients.Queries
                 DateTime? admStartDate = filters?.AdmissionStartDate;
                 DateTime? admEndDate = filters?.AdmissionEndDate;
                 if (admStartDate != null && admEndDate != null)
-                    patientPredicate.Add(x => x.AdmissionDate >= admStartDate && x.AdmissionDate <= admEndDate);
+                    patientPredicate.Add(x => x.AdmitDate >= admStartDate && x.AdmitDate <= admEndDate);
 
                 DateTime? disStartDate = filters?.DischargeStartDate;
                 DateTime? disEndDate = filters?.DischargeEndDate;
