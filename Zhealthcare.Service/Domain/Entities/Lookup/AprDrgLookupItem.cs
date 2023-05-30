@@ -1,4 +1,6 @@
 ﻿
+using Zhealthcare.Service.Domain.Entities.Lookup;
+
 namespace Zhealthcare.Service.Domain.Entities.Drg
 {
 

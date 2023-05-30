@@ -3,6 +3,7 @@ using Mapster;
 using MediatR;
 using Zhealthcare.Service.Domain.Entities;
 using Zhealthcare.Service.Domain.Entities.Drg;
+using Zhealthcare.Service.Domain.Entities.Lookup;
 
 namespace Zhealthcare.Service
 {
@@ -41,11 +42,24 @@ namespace Zhealthcare.Service
                     {
                         builder.WithoutStrictTypeChecking();
                     })
-                    .Configure<Lookup>(builder =>
+                    .Configure<Lookup<MsDrgLookupItem>>(builder =>
+                    {
+                        builder.WithContainer(cosmosConfig?.Connections?["Lookups"].CollectionName ?? string.Empty);
+                        builder.WithoutStrictTypeChecking();
+                    }).Configure<Lookup<AprDrgLookupItem>>(builder =>
+                    {
+                        builder.WithContainer(cosmosConfig?.Connections?["Lookups"].CollectionName ?? string.Empty);
+                        builder.WithoutStrictTypeChecking();
+                    }).Configure<Lookup<ReimbursementTypeLookupItem>>(builder =>
+                    {
+                        builder.WithContainer(cosmosConfig?.Connections?["Lookups"].CollectionName ?? string.Empty);
+                        builder.WithoutStrictTypeChecking();
+                    }).Configure<Lookup<DiagnosisLookupItem>>(builder =>
                     {
                         builder.WithContainer(cosmosConfig?.Connections?["Lookups"].CollectionName ?? string.Empty);
                         builder.WithoutStrictTypeChecking();
                     });
+                
                 });
             return services;
         }

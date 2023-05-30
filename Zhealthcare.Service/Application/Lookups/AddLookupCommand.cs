@@ -1,7 +1,7 @@
 ﻿using MediatR;
-using Zhealthcare.Service.Domain.Entities;
+using Zhealthcare.Service.Domain.Entities.Lookup;
 
 namespace Zhealthcare.Service.Application.Lookups
 {
-    public record AddLookupCommand(Lookup Lookup) : IRequest<bool>;
+    public record AddLookupCommand<T>(Lookup<T> Lookup) : IRequest<bool> where T:ILookupItem;
 }

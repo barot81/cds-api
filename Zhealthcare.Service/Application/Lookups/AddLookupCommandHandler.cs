@@ -1,23 +1,23 @@
 ﻿using MediatR;
 using Microsoft.Azure.CosmosRepository;
-using Zhealthcare.Service.Domain.Entities;
+using Zhealthcare.Service.Domain.Entities.Lookup;
 
 namespace Zhealthcare.Service.Application.Lookups
 {
-    public class AddLookupCommandHandler : IRequestHandler<AddLookupCommand, bool>
+    public class AddLookupCommandHandler : IRequestHandler<AddLookupCommand<ILookupItem>, bool>
     {
-        private readonly IRepository<Lookup> _repository;
-        public AddLookupCommandHandler(IRepository<Lookup> repository)
+        private readonly IRepository<Lookup<ILookupItem>> _repository;
+        public AddLookupCommandHandler(IRepository<Lookup<ILookupItem>> repository)
         {
             _repository= repository;
         }
-        public async Task<bool> Handle(AddLookupCommand request, CancellationToken cancellationToken)
+        public async Task<bool> Handle(AddLookupCommand<ILookupItem> request, CancellationToken cancellationToken)
         {
             try
             {
                 var lookup = request.Lookup;
-                lookup.Type = nameof(Lookup);
-                lookup.PartitionKey = nameof(Lookup);
+                lookup.Type = nameof(Lookup<ILookupItem>);
+                lookup.PartitionKey = nameof(Lookup<ILookupItem>);
                 await _repository.CreateAsync(request.Lookup, cancellationToken);
                 return true;
             }

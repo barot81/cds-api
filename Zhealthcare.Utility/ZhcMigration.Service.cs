@@ -4,8 +4,8 @@ using Microsoft.Extensions.Hosting;
 using Zhealthcare.Service.Application.Lookups;
 using Zhealthcare.Service.Application.Patients.Commands;
 using Zhealthcare.Service.Application.Patients.Models;
-using Zhealthcare.Service.Domain.Entities;
 using Zhealthcare.Service.Domain.Entities.Drg;
+using Zhealthcare.Service.Domain.Entities.Lookup;
 
 namespace Zhealthcare.Utility
 {
@@ -48,7 +48,7 @@ namespace Zhealthcare.Utility
         private async Task MigrateLookups(CancellationToken cancellationToken)
         {
             List<string> failedIds = new();
-            var msDrgItems = DataReaderService.LoadJsonDataFromFile<MsDrgLookupItem>("Data/lookups/MSDRGInfo.json");
+            var msDrgItems = DataReaderService.LoadJsonDataFromFile<DiagnosisLookupItem>("Data/lookups/MSDRGInfo.json");
             if (string.IsNullOrEmpty(await AddLookup("Lookups.MsDrg", msDrgItems, cancellationToken)))
                 failedIds.Add("Lookups.MsDrg");
 
@@ -71,8 +71,8 @@ namespace Zhealthcare.Utility
         {
             try
             {
-                var lookup = new Lookup(id, lookupItems);
-                var result = await _mediator.Send(new AddLookupCommand(lookup), cancellationToken);
+                var lookup = new Lookup<ILookupItem>(id, lookupItems);
+                var result = await _mediator.Send(new AddLookupCommand<ILookupItem>(lookup), cancellationToken);
                 if (!result)
                     return id;
             }
