@@ -1,0 +1,150 @@
+[
+ {
+  "Id": 1,
+  "Name": "Clincal findings without a Dx"
+ },
+ {
+  "Id": 2,
+  "Name": "Documentation Clarification"
+ },
+ {
+  "Id": 3,
+  "Name": "Encephalopathy type"
+ },
+ {
+  "Id": 4,
+  "Name": "Encephalopathy-AMS"
+ },
+ {
+  "Id": 5,
+  "Name": "Chest pain etiology"
+ },
+ {
+  "Id": 6,
+  "Name": "Foley Cath Link"
+ },
+ {
+  "Id": 7,
+  "Name": "Malnutrition"
+ },
+ {
+  "Id": 8,
+  "Name": "Kidney Disease"
+ },
+ {
+  "Id": 9,
+  "Name": "AKI etiology"
+ },
+ {
+  "Id": 10,
+  "Name": "Acute Myocardial infarction Clarification"
+ },
+ {
+  "Id": 11,
+  "Name": "Anemia Type"
+ },
+ {
+  "Id": 12,
+  "Name": "Diabetic Complications"
+ },
+ {
+  "Id": 13,
+  "Name": "Debridement"
+ },
+ {
+  "Id": 14,
+  "Name": "Demand ischemia w\/elevated troponins"
+ },
+ {
+  "Id": 15,
+  "Name": "Drop in Hgb\/Hct"
+ },
+ {
+  "Id": 16,
+  "Name": "Gastroenteritis\/Colitis Type"
+ },
+ {
+  "Id": 17,
+  "Name": "Heart Failure Type"
+ },
+ {
+  "Id": 18,
+  "Name": "Heart Failure"
+ },
+ {
+  "Id": 19,
+  "Name": "Hypercoagulable state"
+ },
+ {
+  "Id": 20,
+  "Name": "Hypertension"
+ },
+ {
+  "Id": 21,
+  "Name": "Mobility"
+ },
+ {
+  "Id": 22,
+  "Name": "Osteomyelitis"
+ },
+ {
+  "Id": 23,
+  "Name": "Pneumonia"
+ },
+ {
+  "Id": 24,
+  "Name": "Pneumonia Type"
+ },
+ {
+  "Id": 25,
+  "Name": "Post-op Complication"
+ },
+ {
+  "Id": 26,
+  "Name": "POA Status"
+ },
+ {
+  "Id": 27,
+  "Name": "Pdx"
+ },
+ {
+  "Id": 28,
+  "Name": "Radiology\/Pathology Clarification"
+ },
+ {
+  "Id": 29,
+  "Name": "Respiratory failure"
+ },
+ {
+  "Id": 30,
+  "Name": "Post-op Respiratory failure"
+ },
+ {
+  "Id": 31,
+  "Name": "Pressure Ulcer"
+ },
+ {
+  "Id": 32,
+  "Name": "Rule in\/Rule Out"
+ },
+ {
+  "Id": 33,
+  "Name": "SIRS"
+ },
+ {
+  "Id": 34,
+  "Name": "Sepsis"
+ },
+ {
+  "Id": 35,
+  "Name": "Shock"
+ },
+ {
+  "Id": 36,
+  "Name": "Symptom as Pdx"
+ },
+ {
+  "Id": 37,
+  "Name": "Urosepsis"
+ }
+]

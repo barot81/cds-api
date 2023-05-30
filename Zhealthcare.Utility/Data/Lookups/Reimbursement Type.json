@@ -1,0 +1,122 @@
+[
+ {
+  "id": 1,
+  "payorCode": 10,
+  "description": "Medicare: NOS (not otherwise specified)",
+  "reimbursementType": null
+ },
+ {
+  "id": 2,
+  "payorCode": 11,
+  "description": "Medicare: Fee for Service",
+  "reimbursementType": null
+ },
+ {
+  "id": 3,
+  "payorCode": 12,
+  "description": "Medicare: HMO",
+  "reimbursementType": null
+ },
+ {
+  "id": 4,
+  "payorCode": 13,
+  "description": "Medicare: Other (CDQM) effective April 1, 2007",
+  "reimbursementType": null
+ },
+ {
+  "id": 5,
+  "payorCode": 20,
+  "description": "Medicaid: NOS",
+  "reimbursementType": null
+ },
+ {
+  "id": 6,
+  "payorCode": 21,
+  "description": "Medicaid: Fee for Service",
+  "reimbursementType": null
+ },
+ {
+  "id": 7,
+  "payorCode": 22,
+  "description": "Medicaid: HMO",
+  "reimbursementType": null
+ },
+ {
+  "id": 8,
+  "payorCode": 30,
+  "description": "Commercial: NOS",
+  "reimbursementType": null
+ },
+ {
+  "id": 9,
+  "payorCode": 31,
+  "description": "Commercial: HMO",
+  "reimbursementType": null
+ },
+ {
+  "id": 10,
+  "payorCode": 32,
+  "description": "Commercial: PPO",
+  "reimbursementType": null
+ },
+ {
+  "id": 11,
+  "payorCode": 33,
+  "description": "Commercial: HMO\/PPO",
+  "reimbursementType": null
+ },
+ {
+  "id": 12,
+  "payorCode": 34,
+  "description": "Commercial: Blue Cross",
+  "reimbursementType": null
+ },
+ {
+  "id": 13,
+  "payorCode": 35,
+  "description": "Commercial: Blue Cross HMO",
+  "reimbursementType": null
+ },
+ {
+  "id": 14,
+  "payorCode": 40,
+  "description": "Worker’s Compensation: NOS",
+  "reimbursementType": null
+ },
+ {
+  "id": 15,
+  "payorCode": 50,
+  "description": "Champus: NOS",
+  "reimbursementType": null
+ },
+ {
+  "id": 16,
+  "payorCode": 60,
+  "description": "Other Government Payers: NOS",
+  "reimbursementType": null
+ },
+ {
+  "id": 17,
+  "payorCode": 70,
+  "description": "Other: NOS",
+  "reimbursementType": null
+ },
+ {
+  "id": 18,
+  "payorCode": 71,
+  "description": "Self Pay",
+  "reimbursementType": null
+ },
+ {
+  "id": 19,
+  "payorCode": 72,
+  "description": "No Charge",
+  "reimbursementType": null
+ },
+ {
+  "id": 20,
+  "payorCode": 73,
+  "description": "Uninsured",
+  "reimbursementType": null
+ }
+]
