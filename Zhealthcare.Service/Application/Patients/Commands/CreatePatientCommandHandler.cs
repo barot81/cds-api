@@ -16,7 +16,7 @@ namespace Zhealthcare.Service.Application.Patients.Commands
         {
             var patient = command.PatientDto.Adapt<Patient>();
             patient.Id = Guid.NewGuid().ToString();
-            patient.CreatedTime = DateTime.UtcNow;
+            patient.CreatedDate = DateTime.UtcNow;
             patient.PartitionKey = command.FacilityId;
             patient.Type = nameof(Patient);
 

@@ -16,14 +16,14 @@ namespace Zhealthcare.Service.Application.Patients.Models
         public string Sex { get; set; } = string.Empty;
         public string HealthPlan { get; set; } = string.Empty;
         public string QueryStatus { get; set; } = string.Empty;
-        public DateTime QueryDate { get; set; } 
+        public DateTime? QueryDate { get; set; } 
 
         public int Los { get; set; }
         public string FinancialClass { get; set; } = string.Empty;
         public string Mrn { get; set; } = string.Empty;
         public DateTime AdmitDate { get; set; }
         public string ReimbursementType { get; set; } = string.Empty;
-        public DateTime DischargeDate { get; set; }
+        public DateTime? DischargeDate { get; set; }
         public string Concurrent_postDC { get; set; } = string.Empty;
         public string PrimaryInsurance { get; set; } = string.Empty;
         public string SecondaryInsurance { get; set; } = string.Empty;

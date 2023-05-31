@@ -14,13 +14,13 @@ namespace Zhealthcare.Service.Domain.Entities
         public string Sex { get; set; } = string.Empty;
         public string HealthPlan { get; set; } = string.Empty;
         public string QueryStatus { get; set; } = string.Empty;
-        public DateTime QueryDate { get; set; }
+        public DateTime? QueryDate { get; set; }
         public int Los { get; set; }
         public string FinancialClass { get; set; } = string.Empty;
         public string Mrn { get; set; } = string.Empty;
         public DateTime AdmitDate { get; set; }
         public string ReimbursementType { get; set; } = string.Empty;
-        public DateTime DischargeDate { get; set; }
+        public DateTime? DischargeDate { get; set; }
         public string Concurrent_postDC { get; set; } = string.Empty;
         public string PrimaryInsurance { get; set; } = string.Empty;
         public string SecondaryInsurance { get; set; } = string.Empty;
@@ -46,9 +46,9 @@ namespace Zhealthcare.Service.Domain.Entities
         public string Diff { get; set; } = string.Empty;
         public string RelWt { get; set; } = string.Empty;
         public string CreatedBy { get; set; } = string.Empty;
-        public DateTime CreatedTime { get; set; }
+        public DateTime CreatedDate { get; set; }
         public string LastUpdatedBy { get; set; } = string.Empty;
-        public DateTime LastUpdatedTime { get; set; }
+        public DateTime LastUpdatedDate { get; set; }
 
         public bool ApplyFilter(PatientFilter patientFilter)
         {

@@ -1,5 +1,4 @@
 ﻿using Exxat.SyncJobs.RoleAccessJob.ServiceCollectionExntesion;
-using Mapster;
 using MediatR;
 using Zhealthcare.Service.Domain.Entities;
 using Zhealthcare.Service.Domain.Entities.Drg;
@@ -32,32 +31,31 @@ namespace Zhealthcare.Service
                 {
                     options.CosmosConnectionString = $"AccountEndpoint={cosmosConfig!.EndpointUrl};AccountKey={cosmosConfig!.AuthorizationKey};";
                     options.DatabaseId = cosmosConfig?.Connections?["Patients"].DatabaseName ?? string.Empty;
-                    options.ContainerId = cosmosConfig?.Connections?["Patients"].CollectionName ?? string.Empty;
+                    //options.ContainerId = cosmosConfig?.Connections?["Patients"].CollectionName ?? string.Empty;
+                    options.ContainerPerItemType = true;
+                    string lookupContainer = cosmosConfig?.Connections?["Lookups"].CollectionName ?? string.Empty;
+                    string patientContainer = cosmosConfig?.Connections?["Patients"].CollectionName ?? string.Empty;
                     options.ContainerBuilder
                     .Configure<Patient>(builder => 
                     {
-                        builder.WithoutStrictTypeChecking();
+                        builder.WithoutStrictTypeChecking().WithContainer(patientContainer);
                     })
                     .Configure<PatientFinding>(builder =>
                     {
-                        builder.WithoutStrictTypeChecking();
+                        builder.WithoutStrictTypeChecking().WithContainer(patientContainer);
                     })
                     .Configure<Lookup<MsDrgLookupItem>>(builder =>
                     {
-                        builder.WithContainer(cosmosConfig?.Connections?["Lookups"].CollectionName ?? string.Empty);
-                        builder.WithoutStrictTypeChecking();
+                        builder.WithContainer(lookupContainer).WithoutStrictTypeChecking();
                     }).Configure<Lookup<AprDrgLookupItem>>(builder =>
                     {
-                        builder.WithContainer(cosmosConfig?.Connections?["Lookups"].CollectionName ?? string.Empty);
-                        builder.WithoutStrictTypeChecking();
+                        builder.WithContainer(lookupContainer).WithoutStrictTypeChecking();
                     }).Configure<Lookup<ReimbursementTypeLookupItem>>(builder =>
                     {
-                        builder.WithContainer(cosmosConfig?.Connections?["Lookups"].CollectionName ?? string.Empty);
-                        builder.WithoutStrictTypeChecking();
+                        builder.WithContainer(lookupContainer).WithoutStrictTypeChecking();
                     }).Configure<Lookup<DiagnosisLookupItem>>(builder =>
                     {
-                        builder.WithContainer(cosmosConfig?.Connections?["Lookups"].CollectionName ?? string.Empty);
-                        builder.WithoutStrictTypeChecking();
+                        builder.WithContainer(lookupContainer).WithoutStrictTypeChecking();
                     });
                 
                 });

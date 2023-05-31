@@ -1,6 +1,7 @@
 ﻿using Exxat.Common.Components;
 using MediatR;
 using Microsoft.Extensions.Hosting;
+using System.Text;
 using Zhealthcare.Service.Application.Lookups;
 using Zhealthcare.Service.Application.Patients.Commands;
 using Zhealthcare.Service.Application.Patients.Models;
@@ -22,7 +23,7 @@ namespace Zhealthcare.Utility
 
         public async Task StartAsync(CancellationToken cancellationToken)
         {
-            await MigratePatients(_stoppingCts.Token);
+           // await MigratePatients(_stoppingCts.Token);
             await MigrateLookups(_stoppingCts.Token);
         }
 
@@ -48,7 +49,7 @@ namespace Zhealthcare.Utility
         private async Task MigrateLookups(CancellationToken cancellationToken)
         {
             List<string> failedIds = new();
-            var msDrgItems = DataReaderService.LoadJsonDataFromFile<DiagnosisLookupItem>("Data/lookups/MSDRGInfo.json");
+            var msDrgItems = DataReaderService.LoadJsonDataFromFile<MsDrgLookupItem>("Data/lookups/MSDRGInfo.json");
             if (string.IsNullOrEmpty(await AddLookup("Lookups.MsDrg", msDrgItems, cancellationToken)))
                 failedIds.Add("Lookups.MsDrg");
 
@@ -98,6 +99,7 @@ namespace Zhealthcare.Utility
                 patient.ReviewStatus = Statuses[rnd.Next(Statuses.Count)];
                 patient.FacilityId = FacilityIds[rnd.Next(FacilityIds.Count)];
                 patient.Concurrent_postDC = ConcurrentPostDc[rnd.Next(ConcurrentPostDc.Count)];
+                patient.Mrn = GenerateRandomAlphanumeric(10);
             }
             List<Guid> FailedIds = new();
             foreach (var patient in patients)
@@ -115,6 +117,21 @@ namespace Zhealthcare.Utility
                 }
             }
             Console.WriteLine(FailedIds);
+        }
+
+        private string GenerateRandomAlphanumeric(int length)
+        {
+            const string alphanumericChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            StringBuilder sb = new StringBuilder(length);
+            Random random = new Random();
+
+            for (int i = 0; i < length; i++)
+            {
+                int randomIndex = random.Next(0, alphanumericChars.Length);
+                sb.Append(alphanumericChars[randomIndex]);
+            }
+
+            return sb.ToString();
         }
 
     }

@@ -49,9 +49,9 @@ namespace Zhealthcare.Service.Domain.Entities
         //public string Pdx { get; set; } = string.Empty;
         //public GeneralComment GeneralComment { get; set; } = new();
         //public string CreatedBy { get; set; } = string.Empty;
-        //public DateTime CreatedTime { get; set; }
+        //public DateTime CreatedDate { get; set; }
         //public string LastUpdatedBy { get; set; } = string.Empty;
-        //public DateTime LastUpdatedTime { get; set; }
+        //public DateTime LastUpdatedDate { get; set; }
 
     }
 }

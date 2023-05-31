@@ -27,7 +27,7 @@ namespace Zhealthcare.Service.Application.Patients.Commands
             patient.Contracted = PatientDto.Contracted;
             patient.PatientClass = PatientDto.PatientClass;
             patient.ReviewStatus = PatientDto.ReviewStatus;
-            patient.LastUpdatedTime = DateTime.UtcNow;
+            patient.LastUpdatedDate = DateTime.UtcNow;
             patient.Type = typeof(Patient).Name;
             patient.GeneralComment = PatientDto.GeneralComment;
             return patient;
