@@ -89,17 +89,19 @@ namespace Zhealthcare.Utility
         {
             var patients = DataReaderService.LoadJsonDataFromFile<PatientDto>("Data/CaseManagementCensus.json");
             Random rnd = new();
-            var instarances = patients.Select(x => x.SecondaryInsurance).ToList();
-            var Statuses = new List<string>() { "No Response", "Non DRG", "Pending Query", "New", "Later Review" };
+            var Statuses = new List<string>() { "New", "Pending Query", "No Query", "Later Review", "Non DRG" };
+            var QueryStatuses = new List<string>() { "Pending", "Answered", "Completed", "Dropped", "No Response" };
             var FacilityIds = new List<string>() { "Z-healthcare", "Appolo", "Fortis", "Urgent Care D" };
             var ConcurrentPostDc = new List<string>() { "Retro", "Concurrent" };
             foreach (var patient in patients)
             {
-                patient.PrimaryInsurance = instarances[rnd.Next(instarances.Count)];
                 patient.ReviewStatus = Statuses[rnd.Next(Statuses.Count)];
                 patient.FacilityId = FacilityIds[rnd.Next(FacilityIds.Count)];
                 patient.Concurrent_postDC = ConcurrentPostDc[rnd.Next(ConcurrentPostDc.Count)];
-                patient.Mrn = GenerateRandomAlphanumeric(10);
+                patient.Mrn = GenerateRandomAlphanumeric(10, 6);
+                patient.Los = Convert.ToInt32(patient.Cur);
+                patient.DrgNo = patient.Drg;
+                patient.QueryStatus = QueryStatuses[rnd.Next(QueryStatuses.Count)];
             }
             List<Guid> FailedIds = new();
             foreach (var patient in patients)
@@ -119,16 +121,32 @@ namespace Zhealthcare.Utility
             Console.WriteLine(FailedIds);
         }
 
-        private string GenerateRandomAlphanumeric(int length)
+        static string GenerateRandomAlphanumeric(int length, int numDigits)
         {
-            const string alphanumericChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            const string digitChars = "0123456789";
+            const string alphaChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             StringBuilder sb = new StringBuilder(length);
             Random random = new Random();
 
-            for (int i = 0; i < length; i++)
+            for (int i = 0; i < numDigits; i++)
             {
-                int randomIndex = random.Next(0, alphanumericChars.Length);
-                sb.Append(alphanumericChars[randomIndex]);
+                int randomIndex = random.Next(0, digitChars.Length);
+                sb.Append(digitChars[randomIndex]);
+            }
+
+            for (int i = numDigits; i < length; i++)
+            {
+                int randomIndex = random.Next(0, alphaChars.Length);
+                sb.Append(alphaChars[randomIndex]);
+            }
+
+            // Shuffle the characters to mix digits and characters
+            for (int i = length - 1; i > 0; i--)
+            {
+                int j = random.Next(i + 1);
+                char temp = sb[i];
+                sb[i] = sb[j];
+                sb[j] = temp;
             }
 
             return sb.ToString();

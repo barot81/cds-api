@@ -25,7 +25,6 @@ namespace Zhealthcare.Service.Application.Patients.Models
         public string ReimbursementType { get; set; } = string.Empty;
         public DateTime? DischargeDate { get; set; }
         public string Concurrent_postDC { get; set; } = string.Empty;
-        public string PrimaryInsurance { get; set; } = string.Empty;
         public string SecondaryInsurance { get; set; } = string.Empty;
         public bool Contracted { get; set; }
         public string PatientClass { get; set; } = string.Empty;
@@ -40,6 +39,7 @@ namespace Zhealthcare.Service.Application.Patients.Models
         public string Cur { get; set; } = string.Empty;
         public string SecondaryPhysician { get; set; } = string.Empty;
         public string DrgNo { get; set; } = string.Empty;
+        public string Drg { get; set; } = string.Empty;
         public string Diagnosis { get; set; } = string.Empty;
         public string ChiefComplaint { get; set; } = string.Empty;
         public string AttendingPhysician { get; set; } = string.Empty;
