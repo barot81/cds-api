@@ -5,7 +5,7 @@ using Zhealthcare.Service.Domain.Entities;
 
 namespace Zhealthcare.Service.Application.Dashboard
 {
-    public class GetAllFacilitiesQueryHandler : IRequestHandler<GetAllFacilitiesQuery, IEnumerable<FacilitiesResponse>>
+    public class GetAllFacilitiesQueryHandler : IRequestHandler<GetAllFacilitiesQuery, IEnumerable<string>>
     {
         private readonly IRepository<Patient> _repository;
 
@@ -14,17 +14,12 @@ namespace Zhealthcare.Service.Application.Dashboard
             _repository = repository;
         }
 
-        public async Task<IEnumerable<FacilitiesResponse>> Handle(GetAllFacilitiesQuery request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<string>> Handle(GetAllFacilitiesQuery request, CancellationToken cancellationToken)
         {
-            var query = new QueryDefinition("select c.facilityId, c.attendingPhysician from c");
+            var query = new QueryDefinition("select distinct c.facilityId from c");
             var facilities = await _repository.GetByQueryAsync(query, cancellationToken);
             return facilities
-                .GroupBy(x => x.FacilityId)
-                .Select(x => new FacilitiesResponse
-                {
-                    FacilityId = x.Key,
-                    Physicians = x.Select(y => y.AttendingPhysician).Distinct().ToList()
-                });
+                .Select(x => x.FacilityId);
         }
     }
 }

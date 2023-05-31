@@ -25,5 +25,12 @@ namespace Zhealthcare.Service.Controllers
             return Ok(await _mediator.Send(new GetAllStatusCountsQuery(facilityId)));
         }
 
+        [HttpGet("Facilities/{facilityId}/Physicians")]
+        public async Task<IActionResult> GetPhysiciansByFacility(string facilityId)
+        {
+            return Ok(await _mediator.Send(new GetPhysiciansQuery(facilityId)));
+        }
+
+
     }
 }

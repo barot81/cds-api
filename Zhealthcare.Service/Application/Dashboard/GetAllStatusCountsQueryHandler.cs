@@ -5,7 +5,7 @@ using Zhealthcare.Service.Domain.Entities;
 
 namespace Zhealthcare.Service.Application.Dashboard
 {
-    public class GetAllStatusCountsQueryHandler : IRequestHandler<GetAllStatusCountsQuery, StatusCountResponse>
+    public class GetAllStatusCountsQueryHandler : IRequestHandler<GetAllStatusCountsQuery, IEnumerable<StatusCount>>
     {
 
         private readonly IRepository<Patient> _repository;
@@ -15,16 +15,15 @@ namespace Zhealthcare.Service.Application.Dashboard
             _repository = repository;
         }
 
-        public async Task<StatusCountResponse> Handle(GetAllStatusCountsQuery request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<StatusCount>> Handle(GetAllStatusCountsQuery request, CancellationToken cancellationToken)
         {
             var query = new QueryDefinition("select c.reviewStatus from c where c.facilityId = @facilityId")
                             .WithParameter("@facilityId", request.FacilityId);
             var reviewStatuses = await _repository.GetByQueryAsync(query, cancellationToken);
 
-            return new StatusCountResponse(reviewStatuses
+            return reviewStatuses
                            .GroupBy(x => x.ReviewStatus)
-                           .ToDictionary(x => x.Key, y => y.Count())
-                        );
+                           .Select(x => new StatusCount(x.Key, x.Count()));
         }
     }
 }

@@ -23,8 +23,8 @@ namespace Zhealthcare.Utility
 
         public async Task StartAsync(CancellationToken cancellationToken)
         {
-           // await MigratePatients(_stoppingCts.Token);
-            await MigrateLookups(_stoppingCts.Token);
+           await MigratePatients(_stoppingCts.Token);
+            // await MigrateLookups(_stoppingCts.Token);
         }
 
         public Task StopAsync(CancellationToken cancellationToken)
@@ -90,7 +90,7 @@ namespace Zhealthcare.Utility
             var patients = DataReaderService.LoadJsonDataFromFile<PatientDto>("Data/CaseManagementCensus.json");
             Random rnd = new();
             var instarances = patients.Select(x => x.SecondaryInsurance).ToList();
-            var Statuses = new List<string>() { "No Response", "Non DRG", "Pending Query", "New" };
+            var Statuses = new List<string>() { "No Response", "Non DRG", "Pending Query", "New", "Later Review" };
             var FacilityIds = new List<string>() { "Z-healthcare", "Appolo", "Fortis", "Urgent Care D" };
             var ConcurrentPostDc = new List<string>() { "Retro", "Concurrent" };
             foreach (var patient in patients)

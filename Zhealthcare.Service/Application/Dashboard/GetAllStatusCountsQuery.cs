@@ -2,17 +2,19 @@
 
 namespace Zhealthcare.Service.Application.Dashboard
 {
-    public record GetAllStatusCountsQuery(string FacilityId) : IRequest<StatusCountResponse>
+    public record GetAllStatusCountsQuery(string FacilityId) : IRequest<IEnumerable<StatusCount>>
     {
     }
 
-    public class StatusCountResponse
+    public class StatusCount
     {
-        public StatusCountResponse(Dictionary<string, int> statusCounts)
+        public StatusCount(string name, int count)
         {
-            StatusCounts = statusCounts;
+            Name= name;
+            Count= count;
         }
 
-        public Dictionary<string, int> StatusCounts { get; set; }
+        public string  Name { get; set; }
+        public int Count { get; set; }
     }
 }
