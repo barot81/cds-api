@@ -52,8 +52,8 @@ namespace Zhealthcare.Service.Domain.Entities
         {
             var result = true;
             if (patientFilter == null) return true;
-            if (patientFilter.Status != null)
-                result = patientFilter.Status.Contains(ReviewStatus);
+            if (patientFilter.ReviewStatus != null)
+                result = patientFilter.ReviewStatus.Contains(ReviewStatus);
             if (patientFilter.QueryStatus != null)
                 result = result && patientFilter.QueryStatus.Contains(QueryStatus);
             DateTime? admStartDate = patientFilter?.AdmissionStartDate;

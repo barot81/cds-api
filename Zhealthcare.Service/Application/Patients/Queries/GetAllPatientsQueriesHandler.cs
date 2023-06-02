@@ -28,16 +28,13 @@ namespace Zhealthcare.Service.Application.Patients.Queries
                 CurrentPage = (request.FilterModel.Start / request.FilterModel.PageSize) + 1
             };
         }
-
-        
-
         
         public Func<Patient, bool> GetFilters(PatientFilter? filters)
         {
             List<Func<Patient, bool>> patientPredicate = new();
             if (filters != null)
             {
-                var statusFilter = filters?.Status;
+                var statusFilter = filters?.ReviewStatus;
                 if (statusFilter != null && statusFilter.Any())
                     patientPredicate.Add(x => statusFilter.Contains(x.ReviewStatus));
 

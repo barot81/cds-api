@@ -36,7 +36,7 @@ namespace Zhealthcare.Service.Application.Patients.Queries
                 )
                 .WithParameter("@partitionKey", FacilityId)
                 .WithParameter("@type", nameof(Patient))
-                .WithParameter("@statuses", string.Join("','", FilterModel?.Filters?.Status ?? Array.Empty<string>()))
+                .WithParameter("@statuses", string.Join("','", FilterModel?.Filters?.ReviewStatus ?? Array.Empty<string>()))
                 .WithParameter("@queryStatuses", string.Join("','", FilterModel?.Filters?.QueryStatus ?? Array.Empty<string>()))
                 .WithParameter("@admissionStartDate", FilterModel?.Filters?.AdmissionStartDate)
                 .WithParameter("@admissionEndDate", FilterModel?.Filters?.AdmissionEndDate)
@@ -51,7 +51,7 @@ namespace Zhealthcare.Service.Application.Patients.Queries
             var filterQuery = "";
             if (filters == null)
                 return "";
-            if (filters.Status != null)
+            if (filters.ReviewStatus != null)
                 filterQuery = " AND ARRAY_CONTAINS([@statuses], c.reviewStatus)";
             if (filters.QueryStatus != null)
                 filterQuery = " AND ARRAY_CONTAINS([@queryStatuses], c.queryStatus)";

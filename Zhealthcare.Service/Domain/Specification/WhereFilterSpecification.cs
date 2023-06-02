@@ -24,7 +24,7 @@ namespace Exxat.Meta.Infrastructure.CosmosDb
         {
             if (filters != null)
             {
-                var statusFilter = filters?.Status;
+                var statusFilter = filters?.ReviewStatus;
                 if (statusFilter != null && statusFilter.Any())
                     Query.Where(x => statusFilter.Contains(x.ReviewStatus));
 

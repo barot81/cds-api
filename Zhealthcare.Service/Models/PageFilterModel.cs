@@ -13,7 +13,7 @@
 
     public class PatientFilter
     {
-        public string[]? Status { get; set; }
+        public string[]? ReviewStatus { get; set; }
         public string[]? QueryStatus { get; set; }
         public DateTime? AdmissionStartDate { get; set; }
         public DateTime? AdmissionEndDate { get; set; }
