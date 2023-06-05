@@ -1,7 +1,6 @@
 ﻿using Exxat.Common.Components;
 using MediatR;
 using Microsoft.Extensions.Hosting;
-using System.Text;
 using Zhealthcare.Service.Application.Lookups;
 using Zhealthcare.Service.Application.Patients.Commands;
 using Zhealthcare.Service.Application.Patients.Models;
@@ -24,7 +23,7 @@ namespace Zhealthcare.Utility
         public async Task StartAsync(CancellationToken cancellationToken)
         {
            await MigratePatients(_stoppingCts.Token);
-            // await MigrateLookups(_stoppingCts.Token);
+           await MigrateLookups(_stoppingCts.Token);
         }
 
         public Task StopAsync(CancellationToken cancellationToken)
@@ -93,12 +92,13 @@ namespace Zhealthcare.Utility
             var QueryStatuses = new List<string>() { "Pending", "Answered", "Completed", "Dropped", "No Response" };
             var FacilityIds = new List<string>() { "Z-healthcare", "Appolo", "Fortis", "Urgent Care D" };
             var ConcurrentPostDc = new List<string>() { "Retro", "Concurrent" };
+
             foreach (var patient in patients)
             {
                 patient.ReviewStatus = Statuses[rnd.Next(Statuses.Count)];
                 patient.FacilityId = FacilityIds[rnd.Next(FacilityIds.Count)];
                 patient.Concurrent_postDC = ConcurrentPostDc[rnd.Next(ConcurrentPostDc.Count)];
-                patient.Mrn = GenerateRandomAlphanumeric(10, 6);
+                patient.Mrn = $"M{GenerateRandomNumber()}";
                 patient.Los = Convert.ToInt32(patient.Cur);
                 patient.DrgNo = patient.Drg;
                 patient.QueryStatus = QueryStatuses[rnd.Next(QueryStatuses.Count)];
@@ -121,35 +121,11 @@ namespace Zhealthcare.Utility
             Console.WriteLine(FailedIds);
         }
 
-        static string GenerateRandomAlphanumeric(int length, int numDigits)
+        static int GenerateRandomNumber()
         {
-            const string digitChars = "0123456789";
-            const string alphaChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            StringBuilder sb = new StringBuilder(length);
-            Random random = new Random();
-
-            for (int i = 0; i < numDigits; i++)
-            {
-                int randomIndex = random.Next(0, digitChars.Length);
-                sb.Append(digitChars[randomIndex]);
-            }
-
-            for (int i = numDigits; i < length; i++)
-            {
-                int randomIndex = random.Next(0, alphaChars.Length);
-                sb.Append(alphaChars[randomIndex]);
-            }
-
-            // Shuffle the characters to mix digits and characters
-            for (int i = length - 1; i > 0; i--)
-            {
-                int j = random.Next(i + 1);
-                char temp = sb[i];
-                sb[i] = sb[j];
-                sb[j] = temp;
-            }
-
-            return sb.ToString();
+            
+                Random random = new();
+                return random.Next(100000000, 1000000000);
         }
 
     }

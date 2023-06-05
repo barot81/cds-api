@@ -37,10 +37,6 @@ namespace Exxat.Meta.Infrastructure.CosmosDb
                 if (admStartDate != null && admEndDate != null)
                     Query.Where(x => x.AdmitDate >= admStartDate && x.AdmitDate <= admEndDate);
 
-                DateTime? disStartDate = filters?.DischargeStartDate;
-                DateTime? disEndDate = filters?.DischargeEndDate;
-                if (disStartDate != null && disEndDate != null)
-                    Query.Where(x => x.DischargeDate >= disStartDate && x.DischargeDate <= disEndDate);
             }
             return Query;
         }

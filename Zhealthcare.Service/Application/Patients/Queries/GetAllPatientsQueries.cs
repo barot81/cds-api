@@ -27,6 +27,7 @@ namespace Zhealthcare.Service.Application.Patients.Queries
             var filterQuery = GetQueryString(FilterModel.Filters);
             var sortingQuery = applySorting ? SortingString(FilterModel.Order) : "";
             var paginationQuery = applyPagination ? PaginationString : "";
+
             var parameterizedQuery = new QueryDefinition(
                 "SELECT " + selectClause + " FROM c WHERE c.partitionKey = @partitionKey AND c.entityName = @type"
                 + filterQuery
@@ -52,11 +53,11 @@ namespace Zhealthcare.Service.Application.Patients.Queries
             if (filters == null)
                 return "";
             if (filters.ReviewStatus != null)
-                filterQuery = " AND ARRAY_CONTAINS([@statuses], c.reviewStatus)";
+                filterQuery += " AND ARRAY_CONTAINS([@statuses], c.reviewStatus)";
             if (filters.QueryStatus != null)
-                filterQuery = " AND ARRAY_CONTAINS([@queryStatuses], c.queryStatus)";
+                filterQuery += " AND ARRAY_CONTAINS([@queryStatuses], c.queryStatus)";
             if (filters.AdmissionStartDate != null && filters.AdmissionEndDate != null)
-                filterQuery = " AND c.admitDate >= @admissionStartDate AND c.admitDate <=  @admissionEndDate";
+                filterQuery += " AND c.admitDate >= @admissionStartDate AND c.admitDate <=  @admissionEndDate";
             return filterQuery;
         }
 

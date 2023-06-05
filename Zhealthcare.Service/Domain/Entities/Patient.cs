@@ -61,10 +61,6 @@ namespace Zhealthcare.Service.Domain.Entities
             if (admStartDate != null && admEndDate != null)
                  result = result && AdmitDate >= admStartDate && AdmitDate <= admEndDate;
 
-            DateTime? disStartDate = patientFilter?.DischargeStartDate;
-            DateTime? disEndDate = patientFilter?.DischargeEndDate;
-            if (disStartDate != null && disEndDate != null)
-                result = result && DischargeDate >= disStartDate && DischargeDate <= disEndDate;
             return result;
         }
 

@@ -42,16 +42,6 @@ namespace Zhealthcare.Service.Application.Patients.Queries
                 if (queryStatusFilter != null && queryStatusFilter.Any())
                     patientPredicate.Add(x => queryStatusFilter.Contains(x.QueryStatus));
 
-                DateTime? admStartDate = filters?.AdmissionStartDate;
-                DateTime? admEndDate = filters?.AdmissionEndDate;
-                if (admStartDate != null && admEndDate != null)
-                    patientPredicate.Add(x => x.AdmitDate >= admStartDate && x.AdmitDate <= admEndDate);
-
-                DateTime? disStartDate = filters?.DischargeStartDate;
-                DateTime? disEndDate = filters?.DischargeEndDate;
-                if (disStartDate != null && disEndDate != null)
-                    patientPredicate.Add(x => x.DischargeDate >= disStartDate && x.DischargeDate <= disEndDate);
-
                 return And(patientPredicate.ToArray());
             }
             return x => true;

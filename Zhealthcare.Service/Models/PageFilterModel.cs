@@ -17,7 +17,5 @@
         public string[]? QueryStatus { get; set; }
         public DateTime? AdmissionStartDate { get; set; }
         public DateTime? AdmissionEndDate { get; set; }
-        public DateTime? DischargeStartDate { get; set; }
-        public DateTime? DischargeEndDate { get; set; }
     }
 }

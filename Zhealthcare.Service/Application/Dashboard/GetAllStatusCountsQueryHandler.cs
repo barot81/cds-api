@@ -17,13 +17,20 @@ namespace Zhealthcare.Service.Application.Dashboard
 
         public async Task<IEnumerable<StatusCount>> Handle(GetAllStatusCountsQuery request, CancellationToken cancellationToken)
         {
-            var query = new QueryDefinition("select c.reviewStatus from c where c.facilityId = @facilityId")
-                            .WithParameter("@facilityId", request.FacilityId);
+            var query = new QueryDefinition("select c.reviewStatus from c where c.facilityId = @facilityId AND c.entityName = @entityName")
+                            .WithParameter("@facilityId", request.FacilityId)
+                            .WithParameter("@entityName", nameof(Patient));
             var reviewStatuses = await _repository.GetByQueryAsync(query, cancellationToken);
 
-            return reviewStatuses
+            var totalCountQuery = new QueryDefinition("select c.id from c where c.entityName = @entityName")
+                            .WithParameter("@entityName", nameof(Patient));
+            var totalIds = await _repository.GetByQueryAsync(totalCountQuery, cancellationToken);
+            
+            var statistics = new List<StatusCount>() { new StatusCount("Total", totalIds.Count()) };
+            return statistics.Concat(
+                        reviewStatuses
                            .GroupBy(x => x.ReviewStatus)
-                           .Select(x => new StatusCount(x.Key, x.Count()));
+                           .Select(x => new StatusCount(x.Key, x.Count())));
         }
     }
 }
