@@ -15,7 +15,7 @@
     {
         public string[]? ReviewStatus { get; set; }
         public string[]? QueryStatus { get; set; }
-        public DateTime? AdmissionStartDate { get; set; }
-        public DateTime? AdmissionEndDate { get; set; }
+        public DateTime? AdmitStartDate { get; set; }
+        public DateTime? AdmitEndDate { get; set; }
     }
 }

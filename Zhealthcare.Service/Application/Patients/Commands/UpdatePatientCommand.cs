@@ -10,7 +10,7 @@ namespace Zhealthcare.Service.Application.Patients.Commands
         {
             patient.IsActive = PatientDto.IsActive;
             patient.PatientName = PatientDto.PatientName;
-            patient.CdsName = PatientDto.CdsName;
+            patient.Cds = PatientDto.Cds;
             patient.Age = PatientDto.Age;
             patient.Sex = PatientDto.Sex;
             patient.HealthPlan = PatientDto.HealthPlan;

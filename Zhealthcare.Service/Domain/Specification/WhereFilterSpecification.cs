@@ -32,8 +32,8 @@ namespace Exxat.Meta.Infrastructure.CosmosDb
                 if (queryStatusFilter != null && queryStatusFilter.Any())
                     Query.Where(x => queryStatusFilter.Contains(x.QueryStatus));
 
-                DateTime? admStartDate = filters?.AdmissionStartDate;
-                DateTime? admEndDate = filters?.AdmissionEndDate;
+                DateTime? admStartDate = filters?.AdmitStartDate;
+                DateTime? admEndDate = filters?.AdmitEndDate;
                 if (admStartDate != null && admEndDate != null)
                     Query.Where(x => x.AdmitDate >= admStartDate && x.AdmitDate <= admEndDate);
 

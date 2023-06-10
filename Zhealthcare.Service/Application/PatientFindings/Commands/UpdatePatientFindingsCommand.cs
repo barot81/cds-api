@@ -13,7 +13,8 @@ namespace Zhealthcare.Service.Application.Patients.Commands
             var patientFindingData = PatientFindingDto.Adapt<PatientFinding>();
             patientFindingData.FacilityId = FacilityId;
             patientFindingData.PatientId = PatientId;
-            patientFindingData.PartitionKey = FacilityId; 
+            patientFindingData.PartitionKey = FacilityId;
+            patientFindingData.Type = typeof(PatientFinding).Name;
             return patientFindingData;
         }
     }

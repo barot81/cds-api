@@ -1,4 +1,5 @@
-﻿using Zhealthcare.Service.Domain.Entities;
+﻿using MediatR;
+using Zhealthcare.Service.Domain.Entities;
 
 namespace Zhealthcare.Service.Application.Patients.Models
 {
@@ -6,7 +7,7 @@ namespace Zhealthcare.Service.Application.Patients.Models
     {
         public bool IsActive { get; set; }
         public string PatientName { get; set; } = string.Empty;
-        public string CdsName { get; set; } = string.Empty;
+        public string Cds { get; set; } = string.Empty;
         public int Age { get; set; }
         public string Sex { get; set; } = string.Empty;
         public string HealthPlan { get; set; } = string.Empty;
@@ -27,4 +28,17 @@ namespace Zhealthcare.Service.Application.Patients.Models
         public string QueryStatus { get; set; } = string.Empty;
 
     }
+
+    public class PatientCommentUpdateDto
+    {
+        public string ReviewStatus { get; set; } = string.Empty;
+
+        public GeneralComment GeneralComment { get; set; } = default!;
+    }
+
+    public class PatientReviewStatusUpdateDto
+    {
+        public string ReviewStatus { get; set; } = string.Empty;
+    }
 }
+

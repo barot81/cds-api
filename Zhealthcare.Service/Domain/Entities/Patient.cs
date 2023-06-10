@@ -9,7 +9,7 @@ namespace Zhealthcare.Service.Domain.Entities
         public string PatientName { get; set; } = string.Empty;
         public string Room { get; set; } = string.Empty;
         public bool IsActive { get; set; }
-        public string CdsName { get; set; } = string.Empty;
+        public string Cds { get; set; } = string.Empty;
         public int Age { get; set; }
         public string Sex { get; set; } = string.Empty;
         public string HealthPlan { get; set; } = string.Empty;
@@ -56,8 +56,8 @@ namespace Zhealthcare.Service.Domain.Entities
                 result = patientFilter.ReviewStatus.Contains(ReviewStatus);
             if (patientFilter.QueryStatus != null)
                 result = result && patientFilter.QueryStatus.Contains(QueryStatus);
-            DateTime? admStartDate = patientFilter?.AdmissionStartDate;
-            DateTime? admEndDate = patientFilter?.AdmissionEndDate;
+            DateTime? admStartDate = patientFilter?.AdmitStartDate;
+            DateTime? admEndDate = patientFilter?.AdmitEndDate;
             if (admStartDate != null && admEndDate != null)
                  result = result && AdmitDate >= admStartDate && AdmitDate <= admEndDate;
 

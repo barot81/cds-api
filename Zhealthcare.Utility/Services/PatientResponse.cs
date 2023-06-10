@@ -30,7 +30,7 @@ namespace Zhealthcare.Service.Domain.Entities
         //public int Age { get; set; }
         //public string Sex { get; set; } = string.Empty;
         //public string HealthPlanName { get; set; } = string.Empty;
-        //public string Status { get; set; } = String.Empty;
+        //public string QueryStatus { get; set; } = String.Empty;
         //public string StatusClass { get; set; } = String.Empty;
 
         //public string QueryStatus { get; set; } = string.Empty;

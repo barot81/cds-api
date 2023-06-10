@@ -6,6 +6,7 @@ using Zhealthcare.Service.Application.Patients.Commands;
 using Zhealthcare.Service.Application.Patients.Models;
 using Zhealthcare.Service.Domain.Entities.Drg;
 using Zhealthcare.Service.Domain.Entities.Lookup;
+using Zhealthcare.Utility.Models;
 
 namespace Zhealthcare.Utility
 {
@@ -13,7 +14,7 @@ namespace Zhealthcare.Utility
     {
         private readonly IMediator _mediator;
         private readonly CancellationTokenSource _stoppingCts =
-                                                   new CancellationTokenSource();
+                                                   new ();
 
         public ZhcMigrationService(IMediator mediator)
         {
@@ -23,7 +24,7 @@ namespace Zhealthcare.Utility
         public async Task StartAsync(CancellationToken cancellationToken)
         {
            await MigratePatients(_stoppingCts.Token);
-           await MigrateLookups(_stoppingCts.Token);
+          // await MigrateLookups(_stoppingCts.Token);
         }
 
         public Task StopAsync(CancellationToken cancellationToken)
@@ -87,12 +88,14 @@ namespace Zhealthcare.Utility
         private async Task MigratePatients(CancellationToken cancellationToken)
         {
             var patients = DataReaderService.LoadJsonDataFromFile<PatientDto>("Data/CaseManagementCensus.json");
+            var contract = DataReaderService.LoadJsonDataFromFile<Contract>("Data/contract.json");
             Random rnd = new();
-            var Statuses = new List<string>() { "New", "Pending Query", "No Query", "Later Review", "Non DRG" };
-            var QueryStatuses = new List<string>() { "Pending", "Answered", "Completed", "Dropped", "No Response" };
+            var Statuses = new List<string>() { "New", "Pending Query", "No Query", "Later Review", "Non DRG", "Reviewed" };
+            var QueryStatuses = new List<string>() { "Pending", "Answered", "Completed", "Dropped", "No Response"};
             var FacilityIds = new List<string>() { "Z-healthcare", "Appolo", "Fortis", "Urgent Care D" };
             var ConcurrentPostDc = new List<string>() { "Retro", "Concurrent" };
-
+            var CdsNames = new List<string>() { "Ashit", "Vishal", "Ankit" };
+            var PatientClass = new List<string>() { "In", "Out" };
             foreach (var patient in patients)
             {
                 patient.ReviewStatus = Statuses[rnd.Next(Statuses.Count)];
@@ -102,6 +105,9 @@ namespace Zhealthcare.Utility
                 patient.Los = Convert.ToInt32(patient.Cur);
                 patient.DrgNo = patient.Drg;
                 patient.QueryStatus = QueryStatuses[rnd.Next(QueryStatuses.Count)];
+                patient.ReimbursementType = contract.FirstOrDefault(x => x.Fc == patient.FinancialClass)?.ReimbursementType ?? "Non DRG";
+                patient.Cds = CdsNames[rnd.Next(CdsNames.Count)];
+                patient.PatientClass = PatientClass[rnd.Next(PatientClass.Count)];
             }
             List<Guid> FailedIds = new();
             foreach (var patient in patients)

@@ -22,11 +22,7 @@ namespace Zhealthcare.Service.Application.Dashboard
                             .WithParameter("@entityName", nameof(Patient));
             var reviewStatuses = await _repository.GetByQueryAsync(query, cancellationToken);
 
-            var totalCountQuery = new QueryDefinition("select c.id from c where c.entityName = @entityName")
-                            .WithParameter("@entityName", nameof(Patient));
-            var totalIds = await _repository.GetByQueryAsync(totalCountQuery, cancellationToken);
-            
-            var statistics = new List<StatusCount>() { new StatusCount("Total", totalIds.Count()) };
+            var statistics = new List<StatusCount>() { new StatusCount("Total", reviewStatuses.Count()) };
             return statistics.Concat(
                         reviewStatuses
                            .GroupBy(x => x.ReviewStatus)

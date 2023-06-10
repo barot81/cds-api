@@ -16,7 +16,7 @@ namespace Zhealthcare.Service.Controllers
         private readonly IMediator _mediator;
         public PatientsController(IMediator mediator)
         => _mediator = mediator;
-        
+
 
         // URL - https://localhost:44378/api/Patient type POST
         [HttpPost("{FacilityId}/patients")]
@@ -40,7 +40,7 @@ namespace Zhealthcare.Service.Controllers
         [HttpGet("{FacilityId}/patients/{id}")]
         public async Task<IActionResult> GetById(string FacilityId, Guid id)
         {
-            return Ok(await _mediator.Send(new GetPatientsByIdQuery(FacilityId,id)));
+            return Ok(await _mediator.Send(new GetPatientsByIdQuery(FacilityId, id)));
         }
 
         [HttpPut("{FacilityId}/patients/{id}")]
@@ -49,10 +49,29 @@ namespace Zhealthcare.Service.Controllers
             return Ok(await _mediator.Send(new UpdatePatientCommand(Id.ToString(), FacilityId, updatedPatient)));
         }
 
-        [HttpDelete("{FacilityId}/patients/{id}")]
-        public async Task<IActionResult> Delete(string FacilityId, Guid id, CancellationToken cancellationToken)
+        [HttpPut("{FacilityId}/patients/{id}/comments")]
+        public async Task<IActionResult> UpdateComments(string FacilityId, Guid Id, [FromBody] PatientCommentUpdateDto updatedPatientComment)
         {
-            return Ok(await _mediator.Send(new DeletePatientByIdCommand(FacilityId, id), cancellationToken));
+            return Ok(await _mediator.Send(new UpdatePatientCommentRequest(Id, FacilityId)
+            {
+                ReviewStatus = updatedPatientComment.ReviewStatus,
+                GeneralComments = updatedPatientComment.GeneralComment
+            }));
         }
+
+        [HttpPut("{FacilityId}/patients/{id}/reviewStatus")]
+        public async Task<IActionResult> UpdateReviewStatus(string FacilityId, Guid Id, [FromBody] PatientReviewStatusUpdateDto updatedReviewStatusComment)
+        => Ok(await _mediator.Send(
+            new UpdatePatientReviewStatusRequest(Id, FacilityId)
+            {
+                ReviewStatus = updatedReviewStatusComment.ReviewStatus
+            }));
+    
+
+    [HttpDelete("{FacilityId}/patients/{id}")]
+    public async Task<IActionResult> Delete(string FacilityId, Guid id, CancellationToken cancellationToken)
+    {
+        return Ok(await _mediator.Send(new DeletePatientByIdCommand(FacilityId, id), cancellationToken));
     }
+}
 }

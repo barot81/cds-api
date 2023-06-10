@@ -20,6 +20,7 @@ namespace Zhealthcare.Service.Application.Patients.Queries
                 $" OR LOWER(c.cds) like @searchQuery" +
                 $" OR LOWER(c.healthPlan) like @searchQuery" +
                 $" OR LOWER(c.reviewStatus) like @searchQuery" +
+                $" OR LOWER(c.reimbursementType) like @searchQuery" +
                 $" OR LOWER(c.generalComment.comments) like @searchQuery)";
         }
         public QueryDefinition GetQueryDefination(string selectClause, bool applySorting = false, bool applyPagination = false)
@@ -37,10 +38,10 @@ namespace Zhealthcare.Service.Application.Patients.Queries
                 )
                 .WithParameter("@partitionKey", FacilityId)
                 .WithParameter("@type", nameof(Patient))
-                .WithParameter("@statuses", string.Join("','", FilterModel?.Filters?.ReviewStatus ?? Array.Empty<string>()))
-                .WithParameter("@queryStatuses", string.Join("','", FilterModel?.Filters?.QueryStatus ?? Array.Empty<string>()))
-                .WithParameter("@admissionStartDate", FilterModel?.Filters?.AdmissionStartDate)
-                .WithParameter("@admissionEndDate", FilterModel?.Filters?.AdmissionEndDate)
+                .WithParameter("@statuses", FilterModel?.Filters?.ReviewStatus ?? Array.Empty<string>())
+                .WithParameter("@queryStatuses", FilterModel?.Filters?.QueryStatus ?? Array.Empty<string>())
+                .WithParameter("@admissionStartDate", FilterModel?.Filters?.AdmitStartDate)
+                .WithParameter("@admissionEndDate", FilterModel?.Filters?.AdmitEndDate)
                 .WithParameter("@searchQuery", $"%{FilterModel?.SearchQuery.ToLower()}%")
                 .WithParameter("@sortBy", FilterModel?.SortBy)
                 .WithParameter("@offset", FilterModel?.Start == 0 ? 0 : (FilterModel?.Start - 1))
@@ -53,10 +54,10 @@ namespace Zhealthcare.Service.Application.Patients.Queries
             if (filters == null)
                 return "";
             if (filters.ReviewStatus != null)
-                filterQuery += " AND ARRAY_CONTAINS([@statuses], c.reviewStatus)";
+                filterQuery += " AND ARRAY_CONTAINS(@statuses, c.reviewStatus)";
             if (filters.QueryStatus != null)
-                filterQuery += " AND ARRAY_CONTAINS([@queryStatuses], c.queryStatus)";
-            if (filters.AdmissionStartDate != null && filters.AdmissionEndDate != null)
+                filterQuery += " AND ARRAY_CONTAINS(@queryStatuses, c.queryStatus)";
+            if (filters.AdmitStartDate != null && filters.AdmitEndDate != null)
                 filterQuery += " AND c.admitDate >= @admissionStartDate AND c.admitDate <=  @admissionEndDate";
             return filterQuery;
         }

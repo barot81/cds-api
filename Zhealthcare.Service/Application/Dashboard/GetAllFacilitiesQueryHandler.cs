@@ -18,7 +18,7 @@ namespace Zhealthcare.Service.Application.Dashboard
         {
             var query = new QueryDefinition("select distinct c.facilityId from c");
             var facilities = await _repository.GetByQueryAsync(query, cancellationToken);
-            return facilities
+            return facilities.Where(x=>!string.IsNullOrEmpty(x.FacilityId))
                 .Select(x => x.FacilityId);
         }
     }
