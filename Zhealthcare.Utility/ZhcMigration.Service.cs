@@ -90,7 +90,7 @@ namespace Zhealthcare.Utility
             var patients = DataReaderService.LoadJsonDataFromFile<PatientDto>("Data/CaseManagementCensus.json");
             var contract = DataReaderService.LoadJsonDataFromFile<Contract>("Data/contract.json");
             Random rnd = new();
-            var Statuses = new List<string>() { "New", "Pending Query", "No Query", "Later Review", "Non DRG", "Reviewed" };
+            var Statuses = new List<string>() { "New", "Pending Query", "No Query", "Later Review", "Reviewed" };
             var QueryStatuses = new List<string>() { "Pending", "Answered", "Completed", "Dropped", "No Response"};
             var FacilityIds = new List<string>() { "Z-healthcare", "Appolo", "Fortis", "Urgent Care D" };
             var ConcurrentPostDc = new List<string>() { "Retro", "Concurrent" };
@@ -98,7 +98,6 @@ namespace Zhealthcare.Utility
             var PatientClass = new List<string>() { "In", "Out" };
             foreach (var patient in patients)
             {
-                patient.ReviewStatus = Statuses[rnd.Next(Statuses.Count)];
                 patient.FacilityId = FacilityIds[rnd.Next(FacilityIds.Count)];
                 patient.Concurrent_postDC = ConcurrentPostDc[rnd.Next(ConcurrentPostDc.Count)];
                 patient.Mrn = $"M{GenerateRandomNumber()}";
@@ -106,8 +105,19 @@ namespace Zhealthcare.Utility
                 patient.DrgNo = patient.Drg;
                 patient.QueryStatus = QueryStatuses[rnd.Next(QueryStatuses.Count)];
                 patient.ReimbursementType = contract.FirstOrDefault(x => x.Fc == patient.FinancialClass)?.ReimbursementType ?? "Non DRG";
+                patient.SecondaryInsurance = contract[rnd.Next(contract.Count)].Insurance;
                 patient.Cds = CdsNames[rnd.Next(CdsNames.Count)];
                 patient.PatientClass = PatientClass[rnd.Next(PatientClass.Count)];
+                if (patient.ReimbursementType.ToLower().Contains("apr-drg") ||
+                    patient.ReimbursementType.ToLower().Contains("ms-drg")
+                    )
+                {
+                    patient.ReviewStatus = Statuses[rnd.Next(Statuses.Count)];
+                }
+                else
+                {
+                    patient.ReviewStatus = "Non DRG";
+                }
             }
             List<Guid> FailedIds = new();
             foreach (var patient in patients)

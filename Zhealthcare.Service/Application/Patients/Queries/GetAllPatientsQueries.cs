@@ -40,8 +40,8 @@ namespace Zhealthcare.Service.Application.Patients.Queries
                 .WithParameter("@type", nameof(Patient))
                 .WithParameter("@statuses", FilterModel?.Filters?.ReviewStatus ?? Array.Empty<string>())
                 .WithParameter("@queryStatuses", FilterModel?.Filters?.QueryStatus ?? Array.Empty<string>())
-                .WithParameter("@admissionStartDate", FilterModel?.Filters?.AdmitStartDate)
-                .WithParameter("@admissionEndDate", FilterModel?.Filters?.AdmitEndDate)
+                .WithParameter("@admitStartDate", FilterModel?.Filters?.AdmitStartDate)
+                .WithParameter("@admitEndDate", FilterModel?.Filters?.AdmitEndDate)
                 .WithParameter("@searchQuery", $"%{FilterModel?.SearchQuery.ToLower()}%")
                 .WithParameter("@sortBy", FilterModel?.SortBy)
                 .WithParameter("@offset", FilterModel?.Start == 0 ? 0 : (FilterModel?.Start - 1))
@@ -58,7 +58,7 @@ namespace Zhealthcare.Service.Application.Patients.Queries
             if (filters.QueryStatus != null)
                 filterQuery += " AND ARRAY_CONTAINS(@queryStatuses, c.queryStatus)";
             if (filters.AdmitStartDate != null && filters.AdmitEndDate != null)
-                filterQuery += " AND c.admitDate >= @admissionStartDate AND c.admitDate <=  @admissionEndDate";
+                filterQuery += " AND c.admitDate >= @admitStartDate AND c.admitDate <=  @admitEndDate";
             return filterQuery;
         }
 
