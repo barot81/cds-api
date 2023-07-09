@@ -10,6 +10,7 @@ namespace Zhealthcare.Service.Controllers
     [Route("api/")]
     [ApiController]
 
+    [Authorize]
     public class PatientsController : ControllerBase
     {
 

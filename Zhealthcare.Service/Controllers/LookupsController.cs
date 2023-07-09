@@ -1,15 +1,14 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Zhealthcare.Service.Application.Dashboard;
 using Zhealthcare.Service.Application.Lookups;
-using Zhealthcare.Service.Domain.Entities.Drg;
-using Zhealthcare.Service.Domain.Entities.Lookup;
 
 namespace Zhealthcare.Service.Controllers
 {
     [Route("api/")]
     [ApiController]
 
+    [Authorize]
     public class LookupsController : ControllerBase
     {
         private readonly IMediator _mediator;
