@@ -23,9 +23,9 @@ namespace Zhealthcare.Service
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwagger();
-            builder.Services.AddAzureAdAuthentication(builder.Configuration);
-            builder.Services.AddPatientModule(builder.Configuration);
+             // builder.Services.AddSwagger();
+            // builder.Services.AddAzureAdAuthentication(builder.Configuration);
+            // builder.Services.AddPatientModule(builder.Configuration);
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
