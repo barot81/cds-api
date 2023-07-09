@@ -1,4 +1,6 @@
 
+using Zhealthcare.Service.Configurations;
+
 namespace Zhealthcare.Service
 {
     public class Program
@@ -9,8 +11,9 @@ namespace Zhealthcare.Service
 
             // Add services to the container.
             builder.Services.AddCors(
-                o => o.AddPolicy("CORS-policy", 
-                b => {
+                o => o.AddPolicy("CORS-policy",
+                b =>
+                {
                     b.WithOrigins("*")
                     .AllowAnyOrigin()
                     .AllowAnyMethod()
@@ -20,7 +23,8 @@ namespace Zhealthcare.Service
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+            builder.Services.AddSwagger();
+            builder.Services.AddAzureAdAuthentication(builder.Configuration);
             builder.Services.AddPatientModule(builder.Configuration);
             var app = builder.Build();
 
@@ -34,8 +38,8 @@ namespace Zhealthcare.Service
 
             app.UseHttpsRedirection();
 
+            app.UseAuthentication();
             app.UseAuthorization();
-
 
             app.MapControllers();
 

@@ -4,7 +4,7 @@ using Zhealthcare.Service.Domain.Entities;
 using Zhealthcare.Service.Domain.Entities.Drg;
 using Zhealthcare.Service.Domain.Entities.Lookup;
 
-namespace Zhealthcare.Service
+namespace Zhealthcare.Service.Configurations
 {
     public static class PatientModuleServiceCollection
     {
@@ -36,7 +36,7 @@ namespace Zhealthcare.Service
                     string lookupContainer = cosmosConfig?.Connections?["Lookups"].CollectionName ?? string.Empty;
                     string patientContainer = cosmosConfig?.Connections?["Patients"].CollectionName ?? string.Empty;
                     options.ContainerBuilder
-                    .Configure<Patient>(builder => 
+                    .Configure<Patient>(builder =>
                     {
                         builder.WithoutStrictTypeChecking().WithContainer(patientContainer);
                     })
@@ -57,7 +57,7 @@ namespace Zhealthcare.Service
                     {
                         builder.WithContainer(lookupContainer).WithoutStrictTypeChecking();
                     });
-                
+
                 });
             return services;
         }

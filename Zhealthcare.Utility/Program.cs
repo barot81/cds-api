@@ -1,9 +1,6 @@
-﻿using MediatR;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using RoleSimplification.Utility;
-using Zhealthcare.Service;
+using Zhealthcare.Service.Configurations;
 
 namespace Zhealthcare.Utility
 {

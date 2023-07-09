@@ -1,12 +1,14 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Identity.Web.Resource;
 using Zhealthcare.Service.Application.Dashboard;
 
 namespace Zhealthcare.Service.Controllers
 {
     [Route("api/")]
     [ApiController]
-
+    [Authorize]
     public class FacilityController : ControllerBase
     {
         private readonly IMediator _mediator;
@@ -14,8 +16,9 @@ namespace Zhealthcare.Service.Controllers
         => _mediator = mediator;
 
         [HttpGet("Facilities")]
+        //[RequiredScopeOrAppPermission(RequiredScopesConfigurationKey = "AzureAd:Scopes:Read")]
         public async Task<IActionResult> GetAll()
-        {
+        {   
             return Ok(await _mediator.Send(new GetAllFacilitiesQuery()));
         }
 
