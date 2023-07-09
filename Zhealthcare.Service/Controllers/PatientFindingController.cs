@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Identity.Web.Resource;
 using Zhealthcare.Service.Application.PatientFindings.Models;
 using Zhealthcare.Service.Application.Patients.Commands;
 using Zhealthcare.Service.Application.Patients.Queries;
@@ -9,8 +10,8 @@ namespace Zhealthcare.Service.Controllers
 {
     [Route("api/")]
     [ApiController]
-
     [Authorize]
+    [RequiredScope("patients.read")]
     public class PatientsFindingController : ControllerBase
     {
         private readonly IMediator _mediator;

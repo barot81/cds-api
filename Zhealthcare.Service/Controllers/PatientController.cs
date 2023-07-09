@@ -1,5 +1,7 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Identity.Web.Resource;
 using Zhealthcare.Service.Application.Patients.Commands;
 using Zhealthcare.Service.Application.Patients.Models;
 using Zhealthcare.Service.Application.Patients.Queries;
@@ -9,8 +11,8 @@ namespace Zhealthcare.Service.Controllers
 {
     [Route("api/")]
     [ApiController]
-
     [Authorize]
+    [RequiredScope("patients.read")]
     public class PatientsController : ControllerBase
     {
 
