@@ -24,7 +24,7 @@ namespace Zhealthcare.Utility
         public async Task StartAsync(CancellationToken cancellationToken)
         {
            await MigratePatients(_stoppingCts.Token);
-          // await MigrateLookups(_stoppingCts.Token);
+           await MigrateLookups(_stoppingCts.Token);
         }
 
         public Task StopAsync(CancellationToken cancellationToken)
