@@ -6,7 +6,7 @@ on:
 env:
   AZURE_WEBAPP_NAME: zcds
   AZURE_WEBAPP_PACKAGE_PATH: Zhealthcare.Service/publish
-  CONFIGURATION: Release
+  CONFIGURATION: Dev
   DOTNET_CORE_VERSION: 6.0.x
   WORKING_DIRECTORY: Zhealthcare.Service
 jobs:
