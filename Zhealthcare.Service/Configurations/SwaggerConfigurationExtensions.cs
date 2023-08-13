@@ -9,7 +9,7 @@ namespace Zhealthcare.Service.Configurations
         {
             Services.AddSwaggerGen(c =>
          {
-             c.SwaggerDoc("v1", new OpenApiInfo { Title = "Exxat.Platform.EmailService", Version = "v1" });
+             c.SwaggerDoc("v1", new OpenApiInfo { Title = "Z-healthcare Patient Service", Version = "v1" });
 
              //Security scheme
              c.AddSecurityDefinition(JwtBearerDefaults.AuthenticationScheme,
