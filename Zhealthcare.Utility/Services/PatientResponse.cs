@@ -2,7 +2,7 @@
 
 namespace Zhealthcare.Service.Domain.Entities
 {
-    internal class Patient
+    internal class PatientResponse
     {
         [JsonProperty("id")]
         public string Id { get; set; } = string.Empty;

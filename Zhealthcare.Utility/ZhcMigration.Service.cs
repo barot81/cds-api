@@ -7,6 +7,7 @@ using Zhealthcare.Service.Application.Patients.Models;
 using Zhealthcare.Service.Domain.Entities.Drg;
 using Zhealthcare.Service.Domain.Entities.Lookup;
 using Zhealthcare.Utility.Models;
+using Zhealthcare.Utility.Services;
 
 namespace Zhealthcare.Utility
 {
@@ -23,8 +24,29 @@ namespace Zhealthcare.Utility
 
         public async Task StartAsync(CancellationToken cancellationToken)
         {
-           await MigratePatients(_stoppingCts.Token);
-           await MigrateLookups(_stoppingCts.Token);
+            // initialize column configuration from cosmos 
+            // Read file from file storage
+            // check if same patient is already exists then update the status / add new patient
+            // write a logic to map column of file and database based on mapping file
+            var patients = ExcelDataReaderService.LoadData();
+
+            List<Guid> FailedIds = new();
+            foreach (var patient in patients)
+            {
+                try
+                {
+                    var result = await _mediator.Send(new CreatePatientCommand(patient.FacilityId, patient), cancellationToken);
+                    if (result == null)
+                        FailedIds.Add(patient.Id);
+                }
+                catch (Exception e)
+                {
+                    FailedIds.Add(patient.Id);
+                    Console.WriteLine(e.Message);
+                }
+            }
+            // await MigratePatients(_stoppingCts.Token);
+            // await MigrateLookups(_stoppingCts.Token);
         }
 
         public Task StopAsync(CancellationToken cancellationToken)

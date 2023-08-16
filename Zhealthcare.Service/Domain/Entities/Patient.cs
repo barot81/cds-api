@@ -28,7 +28,7 @@ namespace Zhealthcare.Service.Domain.Entities
         public string StatusClass { get; set; } = string.Empty;
         public string ReviewStatus { get; set; } = string.Empty;
 
-        public GeneralComment GeneralComment { get; set; } = default!;
+        public GeneralComment GeneralComment { get; set; } = new();
 
         public string UmReviewer { get; set; } = string.Empty;
         public string Dcp { get; set; } = string.Empty;

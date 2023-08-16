@@ -1,16 +1,38 @@
-﻿using Newtonsoft.Json;
+﻿using CsvHelper;
+using CsvHelper.Configuration;
+using Newtonsoft.Json;
+using System.Globalization;
 using System.Text.Json.Nodes;
 
 namespace Exxat.Common.Components;
 
 public static class DataReaderService
 {
+    public static List<T> LoadCsvData<T>(params string[] paths)
+    {
+        var filePath = Path.Combine(paths);
+        using var reader = new StreamReader(filePath);
+        var csvConfig = new CsvConfiguration(CultureInfo.InvariantCulture)
+        {
+            HasHeaderRecord = true,
+            Comment = '#',
+            AllowComments = true,
+            Delimiter = ";",
+            BadDataFound = null,
+            
+        };
+        using var csv = new CsvReader(reader, csvConfig);
+        csv.Context.TypeConverterOptionsCache.GetOptions<string>().NullValues.Add("NULL");
+
+        return csv.GetRecords<T>().ToList();
+    }
     public static List<T> LoadJsonDataFromFile<T>(string filePath)
     {
         string json = File.ReadAllText(filePath);
         List<T> jsonData = JsonConvert.DeserializeObject<List<T>>(json);
         return jsonData.Where(a => a != null).ToList();
     }
+
     public static Dictionary<string, T> LoadJsonPathDataFromFolder<T>(string folderPath)
     {
 
