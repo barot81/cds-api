@@ -27,7 +27,7 @@ namespace Zhealthcare.Service.Application.Dashboard
             };
 
             var count = statistics.Concat(
-                        reviewStatuses!
+                        reviewStatuses
                            .Where(x=>x.DischargeDate == null && x.ReviewStatus != "Pending Query")
                            .GroupBy(x => x.ReviewStatus)
                            .Select(x => new StatusCount(x.Key, x.Count())));
