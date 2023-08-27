@@ -21,14 +21,14 @@ namespace Zhealthcare.Service.Application.Dashboard
                             .WithParameter("@facilityId", request.FacilityId)
                             .WithParameter("@entityName", nameof(Patient));
             var reviewStatuses = (await _repository.GetByQueryAsync(query, cancellationToken)) ?? new List<Patient>();
+            var drgStatuses = reviewStatuses.Where(x => x.DischargeDate == null && x.ReviewStatus != "Pending Query");
             var statistics = new List<StatusCount>() { 
-                new StatusCount("Total", reviewStatuses.Count()),
+                new StatusCount("Total", drgStatuses.Count(x=> x.ReviewStatus != "Non DRG")),
                 new StatusCount("Pending Query", reviewStatuses.Count(x=>x.ReviewStatus == "Pending Query"))
             };
 
             var count = statistics.Concat(
-                        reviewStatuses
-                           .Where(x=>x.DischargeDate == null && x.ReviewStatus != "Pending Query")
+                        drgStatuses
                            .GroupBy(x => x.ReviewStatus)
                            .Select(x => new StatusCount(x.Key, x.Count())));
             return count;
