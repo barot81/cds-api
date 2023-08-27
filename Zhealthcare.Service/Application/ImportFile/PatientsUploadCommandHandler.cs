@@ -18,7 +18,7 @@ namespace Zhealthcare.Service.Application.ImportFile
         {
             var patients = FileReader.LoadCsvData<PatientDto>("Data", request.FileName);
             var patientNos = patients.Select(x => x.PatientNo).ToList();
-            var existingPatients = await _mediator.Send(new GetPatientsByNosQuery(request.FacilityId, patientNos), cancellationToken);
+            var existingPatients = await _mediator.Send(new GetAllNonDischagePatientsQuery(request.FacilityId), cancellationToken);
             HashSet<long> existingPatientNos = new(existingPatients.Select(x => x.PatientNo));
             var newPatients = patients.Where(x=> !existingPatientNos.Contains(x.PatientNo));
             foreach(var patient in newPatients)
@@ -27,6 +27,8 @@ namespace Zhealthcare.Service.Application.ImportFile
             }
             foreach(var patient in existingPatients)
             {
+                if (!patientNos.Contains(patient.PatientNo))
+                    patient.DischargeDate = DateTime.UtcNow.AddDays(-1);
                 await _mediator.Send(new UpdatePatientCommand(patient.Id,request.FacilityId, patient.Adapt<PatientUpdateDto>()), cancellationToken);
             }
             return new ImportFileResponse(true, Enumerable.Empty<ErrorDetail>());

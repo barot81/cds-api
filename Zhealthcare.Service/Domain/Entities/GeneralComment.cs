@@ -6,6 +6,6 @@
 
         public string AddedBy { get; set; } = string.Empty;
 
-        public DateTime AddedOn { get; set; }
+        public DateTime? AddedOn { get; set; }
     }
 }

@@ -10,8 +10,8 @@ namespace Zhealthcare.Service.Controllers
 {
     [Route("api/")]
     [ApiController]
-    //[Authorize]
-    //[RequiredScope("patients.read")]
+    [Authorize]
+    [RequiredScope("patients.read")]
     [AllowAnonymous]
     public class ImportFileController : ControllerBase
     {
@@ -25,6 +25,22 @@ namespace Zhealthcare.Service.Controllers
         [HttpPost("{FacilityId}/importFile/Patients")]
         public async Task<IActionResult> ImportPatients(string FacilityId, string FileName)
         => Ok(await _mediator.Send(new PatientsUploadCommand(FacilityId, FileName)));
-        
+
+        [HttpPost("{FacilityId}/File/Patients")]
+        public async Task<IActionResult> ImportPatientsFromExcel(string FacilityId, [FromForm] IFormFile file)
+        {
+            try
+            {
+                if (file == null || file.Length == 0)
+                    return BadRequest("Invalid file");
+
+                var result = await _mediator.Send(new PatientsImportFromExcelCommand(FacilityId, file));
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Error: {ex.Message}");
+            }
+        }
     }
 }

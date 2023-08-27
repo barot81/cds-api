@@ -17,7 +17,6 @@ namespace Zhealthcare.Service.Controllers
         private readonly IMediator _mediator;
         public PatientsFindingController(IMediator mediator)
         => _mediator = mediator;
-        
 
         [HttpPost("{FacilityId}/patients/{PatientId}/findings")]
         public async Task<IActionResult> Create(string FacilityId,Guid PatientId,[FromBody] PatientFindingDto PatientFindingInfo)

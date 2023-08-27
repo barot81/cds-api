@@ -1,6 +1,5 @@
 ﻿using CsvHelper.Configuration;
 using Zhealthcare.Service.Application.Patients.Models;
-using Zhealthcare.Service.Domain.Entities;
 
 namespace Zhealthcare.Service.Helper
 {
