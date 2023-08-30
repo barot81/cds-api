@@ -28,7 +28,6 @@ namespace Zhealthcare.Service.Application.Patients.Queries
             var filterQuery = GetQueryString(FilterModel.Filters);
             var sortingQuery = applySorting ? SortingString(FilterModel.Order) : "";
             var paginationQuery = applyPagination ? PaginationString : "";
-
             var parameterizedQuery = new QueryDefinition(
                 "SELECT " + selectClause + " FROM c WHERE c.partitionKey = @partitionKey AND c.entityName = @type"
                 + filterQuery
@@ -53,8 +52,13 @@ namespace Zhealthcare.Service.Application.Patients.Queries
             var filterQuery = "";
             if (filters == null)
                 return "";
-            if (filters.ReviewStatus != null)
-                filterQuery += " AND ARRAY_CONTAINS(@statuses, c.reviewStatus)";
+            if (filters.ReviewStatus != null) {
+                if (filters.ReviewStatus.First().StartsWith("Total")) {
+                    filterQuery += " AND c.dischargeDate == null and LOWER(c.reviewStatus) != 'non drg'";
+                }
+                else
+                    filterQuery += " AND ARRAY_CONTAINS(@statuses, c.reviewStatus)";
+            }
             if (filters.QueryStatus != null)
                 filterQuery += " AND ARRAY_CONTAINS(@queryStatuses, c.queryStatus)";
             if (filters.AdmitStartDate != null && filters.AdmitEndDate != null)
