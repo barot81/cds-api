@@ -112,7 +112,7 @@ namespace Zhealthcare.Utility
             var patients = DataReaderService.LoadJsonDataFromFile<PatientDto>("Data/CaseManagementCensus.json");
             var contract = DataReaderService.LoadJsonDataFromFile<Contract>("Data/contract.json");
             Random rnd = new();
-            var Statuses = new List<string>() { "New", "Pending Query", "No Query", "Later Review", "Reviewed" };
+            var Statuses = new List<string>() { "New DRG", "Pending Query", "No Query", "Later Review", "Reviewed" };
             var QueryStatuses = new List<string>() { "Pending", "Answered", "Completed", "Dropped", "No Response"};
             var FacilityIds = new List<string>() { "Z-healthcare", "Appolo", "Fortis", "Urgent Care D" };
             var ConcurrentPostDc = new List<string>() { "Retro", "Concurrent" };

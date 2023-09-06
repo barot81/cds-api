@@ -32,5 +32,13 @@ namespace Zhealthcare.Service.Helper
             string json = File.ReadAllText(filePath);
             return JsonConvert.DeserializeObject<T>(json);
         }
+
+        public static List<T> LoadJsonDataList<T>(params string[] paths)
+        {
+            var filePath = Path.Combine(paths);
+            string json = File.ReadAllText(filePath);
+            List<T> jsonData = JsonConvert.DeserializeObject<List<T>>(json);
+            return jsonData.Where(a => a != null).ToList();
+        }
     }
 }

@@ -6,7 +6,6 @@ namespace Zhealthcare.Service.Configurations
 {
     public static class AuthenticationConfigurationExtensions
     {
-
         public static IServiceCollection AddAzureAdAuthentication(this IServiceCollection services, IConfiguration Configuration)
         {
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

@@ -4,6 +4,7 @@ using OfficeOpenXml;
 using Zhealthcare.Service.Application.Patients.Commands;
 using Zhealthcare.Service.Application.Patients.Models;
 using Zhealthcare.Service.Application.Patients.Queries;
+using Zhealthcare.Service.Domain.Entities;
 using Zhealthcare.Service.Helper;
 using Zhealthcare.Service.Models;
 
@@ -18,12 +19,19 @@ namespace Zhealthcare.Service.Application.ImportFile
         public async Task<ImportFileResponse> Handle(PatientsImportFromExcelCommand request, CancellationToken cancellationToken)
         {
             var patients = ReadExcelData(request.FacilityId, request.File);
+            var contracts = FileReader.LoadJsonDataList<Contract>("Data", "contract.json");
             var patientNos = patients.Select(x => x.PatientNo).ToList();
             var existingPatients = await _mediator.Send(new GetAllNonDischagePatientsQuery(request.FacilityId), cancellationToken);
             HashSet<long> existingPatientNos = new(existingPatients.Select(x => x.PatientNo));
             var newPatients = patients.Where(x=> !existingPatientNos.Contains(x.PatientNo));
             foreach(var patient in newPatients)
             {
+                patient.ReimbursementType = contracts.FirstOrDefault(x => x.Insurance == patient.FinancialClass)?.ReimbursementType ?? "Non DRG";
+                patient.ReviewStatus  = 
+                    patient.ReimbursementType.ToLower().Contains("apr-drg") 
+                    || patient.ReimbursementType.ToLower().Contains("ms-drg")
+                    ? "New DRG"
+                    : "Non DRG";
                 await _mediator.Send(new CreatePatientCommand(request.FacilityId, patient), cancellationToken);
             }
             foreach(var patient in existingPatients)

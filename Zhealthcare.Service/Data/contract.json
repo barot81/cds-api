@@ -1,0 +1,1388 @@
+[
+ {
+  "fc": "A1",
+  "insurance": "AHMC SPECIAL HANDLING       -I\/P",
+  "isContracted": true
+ },
+ {
+  "fc": "A2",
+  "insurance": "AHMC HEALTH EPO             -I\/P",
+  "isContracted": true,
+  "reimbursementType": "PER DIEM"
+ },
+ {
+  "fc": "A3",
+  "insurance": "AHMC HEALTH\/BLUE SHIELD PPO -I\/P",
+  "isContracted": true,
+  "reimbursementType": "PER DIEM"
+ },
+ {
+  "fc": "A4",
+  "insurance": "AHMC HEALTH EPO - AHHS -I\/P",
+  "isContracted": true
+ },
+ {
+  "fc": "B1",
+  "insurance": "ANTHEM BLUE CROSS -I\/P",
+  "isContracted": true,
+  "reimbursementType": "PER DIEM"
+ },
+ {
+  "fc": "B6",
+  "insurance": "BLUE SHIELD HMO             -I\/P",
+  "isContracted": true,
+  "reimbursementType": "PER DIEM"
+ },
+ {
+  "fc": "B7",
+  "insurance": "BLUE SHIELD VALUE NETWORK COV CA HMO-I\/P",
+  "isContracted": true,
+  "reimbursementType": "PER DIEM"
+ },
+ {
+  "fc": "BC",
+  "insurance": "BLUE SHIELD HEALTHY FAMILIES-I\/P",
+  "isContracted": true,
+  "reimbursementType": "PER DIEM"
+ },
+  {
+    "fc": "BI",
+    "insurance": "MEDICARE MCAL SECONDARY     -I/P",
+    "isContracted": true,
+    "reimbursementType": "MS-DRG"
+  },
+ {
+  "fc": "BJ",
+  "insurance": "ANTHEM BC OF CA OUT OF STATE PLAN-I\/P",
+  "isContracted": true,
+  "reimbursementType": "PER DIEM"
+ },
+  {
+    "fc": "BK",
+    "insurance": "CAL OPTIMA HMO              -I/P",
+    "isContracted": true,
+    "reimbursementType": "MS-DRG"
+  },
+  {
+    "fc": "BL",
+    "insurance": "UNITED CARE HLTH PLAN MCAL EXPANSION IP",
+    "isContracted": true,
+    "reimbursementType": "MS-DRG"
+  },
+ {
+  "fc": "BN",
+  "insurance": "ANTHEM BLUE CROSS WC        -I\/P",
+  "isContracted": true,
+  "reimbursementType": "PER DIEM"
+ },
+ {
+  "fc": "BO",
+  "insurance": "BLUE SHIELD PPO             -I\/P",
+  "isContracted": true,
+  "reimbursementType": "PER DIEM"
+ },
+ {
+  "fc": "BW",
+  "insurance": "ANTHEM BLUE CROSS AHMC EMPLOYEE  -I\/P",
+  "isContracted": true,
+  "reimbursementType": "PER DIEM"
+ },
+ {
+  "fc": "BX",
+  "insurance": "BLUE SHIELD OUT OF ST       -I\/P",
+  "isContracted": true,
+  "reimbursementType": "PER DIEM"
+ },
+ {
+  "fc": "BY",
+  "insurance": "ANTHEM BX COVERED CALIF EXCHANGE -I\/P",
+  "isContracted": true,
+  "reimbursementType": "PER DIEM"
+ },
+ {
+  "fc": "BZ",
+  "insurance": "BLUE SHIELD VALUE NETWORK COV CA PPO-I\/P",
+  "isContracted": true,
+  "reimbursementType": "PER DIEM"
+ },
+ {
+  "fc": "C1",
+  "insurance": "COMMERCIAL MISC             -I\/P",
+  "isContracted": true,
+  "reimbursementType": "% OF CHARGES"
+ },
+ {
+  "fc": "C2",
+  "insurance": "VICTIMS OF CRIME            -I\/P",
+  "isContracted": true,
+  "reimbursementType": "% OF CHARGES"
+ },
+ {
+  "fc": "C4",
+  "insurance": "CARE 1ST HEALTHY FAMILIES   -I\/P",
+  "isContracted": true
+ },
+ {
+  "fc": "C5",
+  "insurance": "ANTHEM BLUE CROSS\/HLTHY FAMILIES\/AIM-I\/P",
+  "isContracted": true,
+  "reimbursementType": "PER DIEM"
+ },
+ {
+  "fc": "C7",
+  "insurance": "HEALTH NET HEALTHY FAMILIES\/AIM  -I\/P",
+  "isContracted": true
+ },
+ {
+  "fc": "C8",
+  "insurance": "SAFEPLACE                   -I\/P",
+  "isContracted": true,
+  "reimbursementType": "As of 10\/01\/2021, for registration purposes only"
+ },
+ {
+  "fc": "CC",
+  "insurance": "APPLECARE HEALTHY FAMILIES  -I\/P",
+  "isContracted": true
+ },
+  {
+    "fc": "CG",
+    "insurance": "CALOPTIMA/MEDI-CAL EXPANSION P",
+    "isContracted": true,
+    "reimbursementType": "MS-DRG"
+  },
+ {
+  "fc": "CI1",
+  "insurance": "HEALTHCARE PARTNERS\/HLTHY FAMILIES -I\/P",
+  "isContracted": true
+ },
+ {
+  "fc": "CI5",
+  "insurance": "MISC NON-CONTRACT HEALTHY FAMILIES -I\/P",
+  "isContracted": true
+ },
+ {
+  "fc": "CI9",
+  "insurance": "ALTAMED HEALTH NETWORK HEALTHY FAM -I\/P",
+  "isContracted": true
+ },
+ {
+  "fc": "CIA",
+  "insurance": "HCP\/HUNTINGTON MEM HOSP HEALTH FAM -I\/P",
+  "isContracted": true
+ },
+ {
+  "fc": "CJ",
+  "insurance": "ADVANCE CLINICAL RESEARCH INST   -I\/P",
+  "isContracted": true
+ },
+ {
+  "fc": "CL",
+  "insurance": "ALLNET PREFERRED PROVIDER   -I\/P",
+  "isContracted": true
+ },
+ {
+  "fc": "CS",
+  "insurance": "CENTRAL HEALTH\/BEVERLY HOSP HLTH FAM-I\/P",
+  "isContracted": true
+ },
+ {
+  "fc": "CX",
+  "insurance": "MEDI-CAL AQUISITION CO      -I\/P",
+  "isContracted": true
+ },
+ {
+  "fc": "CZ",
+  "insurance": "AHMC RECIPROCITY COMM HSMSO -I\/P",
+  "isContracted": true,
+  "reimbursementType": "PER DIEM"
+ },
+ {
+  "fc": "D6",
+  "insurance": "AETNA NON-GATEKEEPER        -I\/P",
+  "isContracted": true,
+  "reimbursementType": "PER DIEM"
+ },
+ {
+  "fc": "DG",
+  "insurance": "HEALTH PAYORS ORGANIZATION  -I\/P",
+  "isContracted": true
+ },
+ {
+  "fc": "DI",
+  "insurance": "BEECH ST PPO                -I\/P",
+  "isContracted": true
+ },
+ {
+  "fc": "DJ",
+  "insurance": "CORVEL PPO                  -I\/P",
+  "isContracted": true
+ },
+ {
+  "fc": "DL",
+  "insurance": "NATIONAL PROVIDER NETWORK   -I\/P",
+  "isContracted": true
+ },
+ {
+  "fc": "DN",
+  "insurance": "CHOICE CARE NETWORK         -I\/P",
+  "isContracted": true
+ },
+ {
+  "fc": "DO",
+  "insurance": "CIGNA PPO                   -I\/P",
+  "isContracted": true,
+  "reimbursementType": "PER DIEM"
+ },
+ {
+  "fc": "DT",
+  "insurance": "ORANGE COUNTY PPO           -I\/P",
+  "isContracted": true
+ },
+ {
+  "fc": "DU",
+  "insurance": "ORANGE COUNTY EPO           -I\/P",
+  "isContracted": true
+ },
+ {
+  "fc": "DV",
+  "insurance": "FIRST HEALTH NETWORK PPO    -I\/P",
+  "isContracted": true,
+  "reimbursementType": "PER DIEM"
+ },
+ {
+  "fc": "DX",
+  "insurance": "TAKE CARE                   -I\/P",
+  "isContracted": true
+ },
+ {
+  "fc": "DZ",
+  "insurance": "THREE RIVERS PROVIDERS NETWORK   -I\/P",
+  "isContracted": true
+ },
+ {
+  "fc": "E2",
+  "insurance": "GREAT WEST HMO\/POS\/OPEN ACCESS   -I\/P",
+  "isContracted": true,
+  "reimbursementType": "PER DIEM"
+ },
+ {
+  "fc": "E3",
+  "insurance": "GREAT WEST HLTHCRE PPO      -I\/P",
+  "isContracted": true
+ },
+ {
+  "fc": "E4",
+  "insurance": "HEALTH NET PPO\/EPO          -I\/P",
+  "isContracted": true,
+  "reimbursementType": "PER DIEM"
+ },
+ {
+  "fc": "E7",
+  "insurance": "INTERPLAN PPO               -I\/P",
+  "isContracted": true
+ },
+ {
+  "fc": "E8",
+  "insurance": "IN CUSTODY POLICE           -I\/P",
+  "isContracted": true
+ },
+ {
+  "fc": "EC",
+  "insurance": "MULTIPLAN PPO               -I\/P",
+  "isContracted": true,
+  "reimbursementType": "% OF CHARGES"
+ },
+ {
+  "fc": "EI",
+  "insurance": "UHC PPO\/ALL PAYER APPENDIX  -I\/P",
+  "isContracted": true,
+  "reimbursementType": "PER DIEM"
+ },
+ {
+  "fc": "EI1",
+  "insurance": "UHC\/ NAVIGATE SELECT        -I\/P",
+  "isContracted": true,
+  "reimbursementType": "PER DIEM"
+ },
+ {
+  "fc": "EI4",
+  "insurance": "UHC HMO\/NETWORK BENEFIT PREFFERED-I\/P",
+  "isContracted": true,
+  "reimbursementType": "PER DIEM"
+ },
+ {
+  "fc": "EI5",
+  "insurance": "UHC HMO\/NETWORK BENEFT NON-PREFFERED-I\/P",
+  "isContracted": true,
+  "reimbursementType": "PER DIEM"
+ },
+ {
+  "fc": "EI6",
+  "insurance": "ST VINCENT MED CENTER COMMERCIAL   -I\/P",
+  "isContracted": true
+ },
+ {
+  "fc": "EI7",
+  "insurance": "SEOUL MEDICAL GROUP COMMERCIAL -I\/P",
+  "isContracted": true
+ },
+ {
+  "fc": "EL",
+  "insurance": "PRIME CARE HLTH NETWORK PPO -I\/P",
+  "isContracted": true
+ },
+ {
+  "fc": "EN",
+  "insurance": "PRIVATE HEALTHCARE SYS PPO  -I\/P",
+  "isContracted": true,
+  "reimbursementType": "PER DIEM"
+ },
+ {
+  "fc": "ES",
+  "insurance": "HERITAGE PROVIDER NETWORK   -I\/P",
+  "isContracted": true,
+  "reimbursementType": "MS-DRG"
+ },
+ {
+  "fc": "F4",
+  "insurance": "AETNA GATEKEEPER(HMO\/EPO\/POS)    -I\/P",
+  "isContracted": true,
+  "reimbursementType": "PER DIEM"
+ },
+ {
+  "fc": "F5",
+  "insurance": "CALVOS SELECT CARE COMMERCIAL    -I\/P",
+  "isContracted": true
+ },
+ {
+  "fc": "FC",
+  "insurance": "APPLECARE MED GRP COMM      -I\/P",
+  "isContracted": true,
+  "reimbursementType": "ANCILLARY CONTRACT"
+ },
+ {
+  "fc": "FI3",
+  "insurance": "ONE LEGACY COMM             -I\/P",
+  "isContracted": true,
+  "reimbursementType": "PER DIEM"
+ },
+ {
+  "fc": "FI4",
+  "insurance": "NETCARE LIFE AND HEALTH     -I\/P",
+  "isContracted": true
+ },
+ {
+  "fc": "FIC",
+  "insurance": "HCP\/HUNTINGTON MEM HOSPITAL COMM -I\/P",
+  "isContracted": true,
+  "reimbursementType": "PER DIEM"
+ },
+ {
+  "fc": "FIE",
+  "insurance": "HEALTH NET COMMUNITY CARE COMM   -I\/P",
+  "isContracted": true,
+  "reimbursementType": "MS-DRG"
+ },
+ {
+  "fc": "FIF",
+  "insurance": "HEALTHNET MEDI-CONNECT PROGRAM   -I\/P",
+  "isContracted": true,
+  "reimbursementType": "MS-DRG"
+ },
+ {
+  "fc": "FIW",
+  "insurance": "HEALTH NET ENHANCED PPO     -I\/P",
+  "isContracted": true,
+  "reimbursementType": "PER DIEM"
+ },
+ {
+  "fc": "FIZ",
+  "insurance": "PROSPECT HEALTH PLAN COMMERCIAL -I\/P",
+  "isContracted": true,
+  "reimbursementType": "MS-DRG"
+ },
+ {
+  "fc": "FS1",
+  "insurance": "BEVERLY HOSPITAL COMM\/EPO\/NMM -I\/P",
+  "isContracted": true,
+  "reimbursementType": "MS-DRG"
+ },
+ {
+  "fc": "FW",
+  "insurance": "HEALTH NET HMO\/POS          -I\/P",
+  "isContracted": true,
+  "reimbursementType": "MS-DRG"
+ },
+ {
+  "fc": "G1",
+  "insurance": "HEALTH CARE PARTNERS        -I\/P",
+  "isContracted": true,
+  "reimbursementType": "PER DIEM"
+ },
+ {
+  "fc": "G2",
+  "insurance": "KAISER HMO\/PPO              -I\/P",
+  "isContracted": true,
+  "reimbursementType": "% OF CHARGES"
+ },
+ {
+  "fc": "G3",
+  "insurance": "DAVITA HEALTHCARE PARTNERS  -I\/P",
+  "isContracted": true
+ },
+ {
+  "fc": "G7",
+  "insurance": "STAY WELL INSURANCE         -I\/P",
+  "isContracted": true
+ },
+ {
+  "fc": "GI1",
+  "insurance": "MONARCH HEALTH PLAN COMMERCIAL   -I\/P",
+  "isContracted": true,
+  "reimbursementType": "PER DIEM"
+ },
+ {
+  "fc": "GI2",
+  "insurance": "MONARCH HEALTH PLAN COVERED CA   -I\/P",
+  "isContracted": true,
+  "reimbursementType": "PER DIEM"
+ },
+ {
+  "fc": "GI3",
+  "insurance": "UNIVERSAL CARE BRAND NEW DAY COMM -I\/P",
+  "isContracted": true,
+  "reimbursementType": "MS-DRG"
+ },
+ {
+  "fc": "GI4",
+  "insurance": "UNIVERSAL CARE BRAND NEW DAY COV CA -I\/P",
+  "isContracted": true
+ },
+ {
+  "fc": "GJ",
+  "insurance": "HEALTH NET SENIOR\/CAP\/MEMORIAL IPA-I\/P",
+  "isContracted": true
+ },
+ {
+  "fc": "GK",
+  "insurance": "SCAN HEALTHPLAN NON-PREFERRED    -I\/P",
+  "isContracted": true,
+  "reimbursementType": "MS-DRG"
+ },
+ {
+  "fc": "GN",
+  "insurance": "BLUE CROSS SENIOR\/CAP\/MONARCH    -I\/P",
+  "isContracted": true
+ },
+ {
+  "fc": "GO",
+  "insurance": "BLUE SHIELD PROMISE HEALTH HMO      -I\/P",
+  "isContracted": true
+ },
+ {
+  "fc": "GQ",
+  "insurance": "AETNA SENIOR\/CAP\/MEMORIAL IPA    -I\/P",
+  "isContracted": true
+ },
+ {
+  "fc": "GT",
+  "insurance": "BLUE SHIELD SENIOR\/MEMORIAL IPA\/CAP-I\/P",
+  "isContracted": true
+ },
+ {
+  "fc": "GU",
+  "insurance": "SECURE HORIZONS SR\/CAP\/MEMORIAL IPA-I\/P",
+  "isContracted": true
+ },
+ {
+  "fc": "GV",
+  "insurance": "SECURE HORIZONS SR\/CAP\/PROSPECT  -I\/P",
+  "isContracted": true
+ },
+ {
+  "fc": "GW",
+  "insurance": "SECURE HORIZONS SR\/CAP\/TALBERT   -I\/P",
+  "isContracted": true
+ },
+ {
+  "fc": "GX",
+  "insurance": "SCAN HLTHPLN SENIOR\/CAP\/MEMORIAL IPA-I\/P",
+  "isContracted": true
+ },
+ {
+  "fc": "K4",
+  "insurance": "APPLECARE MED GRP MEDI-CAL  -I\/P",
+  "isContracted": true
+ },
+ {
+  "fc": "KCP",
+  "insurance": "HERITAGE PROVIDER NETWORK MEDI-CAL -I\/P",
+  "isContracted": true,
+  "reimbursementType": "APR-DRG"
+ },
+ {
+  "fc": "KF",
+  "insurance": "AHMC RECIPROCITY MNGD MCAL CNTRL MSO-I\/P",
+  "isContracted": true,
+  "reimbursementType": "PER DIEM"
+ },
+ {
+  "fc": "KHP",
+  "insurance": "HERITAGE PROV NTWK CALOPTIMA MCAL -I\/P",
+  "isContracted": true,
+  "reimbursementType": "APR-DRG"
+ },
+ {
+  "fc": "KI",
+  "insurance": "AHMC RECIPROCITY MNGD MCAL ALPHA MSO-I\/P",
+  "isContracted": true,
+  "reimbursementType": "PER DIEM"
+ },
+ {
+  "fc": "KI1",
+  "insurance": "AHMC RECIPROCITY MGD HLTHY FAM HSMSO-I\/P",
+  "isContracted": true,
+  "reimbursementType": "PER DIEM"
+ },
+ {
+  "fc": "KI6",
+  "insurance": "HERITAGE PROV NTWK CALOPTIMA EXPAN -I\/P",
+  "isContracted": true
+ },
+ {
+  "fc": "KI7",
+  "insurance": "FAMILY CHOICE\/MEDI-CAL EXPANSION   -I\/P",
+  "isContracted": true,
+  "reimbursementType": "APR-DRG"
+ },
+ {
+  "fc": "KI8",
+  "insurance": "AMVI CARE HLTH NTWK\/MCAL EXPANSION -I\/P",
+  "isContracted": true,
+  "reimbursementType": "APR-DRG"
+ },
+ {
+  "fc": "KIZ",
+  "insurance": "MONARCH MED GRP\/CALOPTIMA EXPANSION-I\/P",
+  "isContracted": true,
+  "reimbursementType": "APR-DRG"
+ },
+ {
+  "fc": "KJ",
+  "insurance": "ARTA WEST\/CALOPTIMA         -I\/P",
+  "isContracted": true
+ },
+ {
+  "fc": "KL",
+  "insurance": "MONARCH MED GRP\/CALOPTIMA   -I\/P",
+  "isContracted": true,
+  "reimbursementType": "APR-DRG"
+ },
+ {
+  "fc": "KQ",
+  "insurance": "AMVI CARE HLTH NETWORK\/CALOPTIMA -I\/P",
+  "isContracted": true,
+  "reimbursementType": "APR-DRG"
+ },
+ {
+  "fc": "KS",
+  "insurance": "CHOC CALOPTIMA              -I\/P",
+  "isContracted": true,
+  "reimbursementType": "APR-DRG"
+ },
+ {
+  "fc": "KT",
+  "insurance": "FAMILY CHOICE HLTH NETWORK\/CALOPTIMA-I\/P",
+  "isContracted": true,
+  "reimbursementType": "APR-DRG"
+ },
+ {
+  "fc": "KU",
+  "insurance": "KAISER PERMANENTE HMO\/CALOPTIMA  -I\/P",
+  "isContracted": true,
+  "reimbursementType": "APR-DRG"
+ },
+ {
+  "fc": "KV",
+  "insurance": "CHOC CALOPTIMA EXPANSION         -I\/P",
+  "isContracted": true,
+  "reimbursementType": "APR-DRG"
+ },
+ {
+  "fc": "KZ",
+  "insurance": "AHMC RECIPROCITY MNGD MCAL HSMSO -I\/P",
+  "isContracted": true,
+  "reimbursementType": "PER DIEM"
+ },
+ {
+  "fc": "L2",
+  "insurance": "BC OF CALIF MEDICAL HMO     -I\/P",
+  "isContracted": true,
+  "reimbursementType": "APR-DRG"
+ },
+ {
+  "fc": "L5",
+  "insurance": "MOLINA MEDICAL CENTER       -I\/P",
+  "isContracted": true,
+  "reimbursementType": "APR-DRG"
+ },
+ {
+  "fc": "L6",
+  "insurance": "CALVOS SELECT CARE MEDI-CAL -I\/P",
+  "isContracted": true,
+  "reimbursementType": "APR-DRG"
+ },
+ {
+  "fc": "L7",
+  "insurance": "PROSPECT HEALTH PLAN MCAL   -I\/P",
+  "isContracted": true,
+  "reimbursementType": "APR-DRG"
+ },
+ {
+  "fc": "L9",
+  "insurance": "PROSPECT HEALTH PLAN MCAL EXPANSION -I\/P",
+  "isContracted": true,
+  "reimbursementType": "APR-DRG"
+ },
+ {
+  "fc": "LA",
+  "insurance": "LA CARE\/LA COUNTY DHS MCAL  -I\/P",
+  "isContracted": true,
+  "reimbursementType": "APR-DRG"
+ },
+ {
+  "fc": "LE",
+  "insurance": "BLUE SHIELD PROMISE HEALTHPLAN\/MCAL -I\/P",
+  "isContracted": true,
+  "reimbursementType": "APR-DRG"
+ },
+ {
+  "fc": "LG",
+  "insurance": "CAL OPTIMA HLTHY FAM\/KIDS   -I\/P",
+  "isContracted": true
+ },
+ {
+  "fc": "LI",
+  "insurance": "MCAL HMO                    -I\/P",
+  "isContracted": true,
+  "reimbursementType": "APR-DRG"
+ },
+ {
+  "fc": "LI5",
+  "insurance": "CAL OPTIMA   SOC            -I\/P",
+  "isContracted": true,
+  "reimbursementType": "APR-DRG"
+ },
+ {
+  "fc": "LI8",
+  "insurance": "CENTRAL HEALTH\/BEVERLY HOSP MGD MCAL-I\/P",
+  "isContracted": true,
+  "reimbursementType": "APR-DRG"
+ },
+ {
+  "fc": "LIF",
+  "insurance": "ELA'S DRS HOSPITAL\/SYNERMED MCAL -I\/P",
+  "isContracted": true,
+  "reimbursementType": "APR-DRG"
+ },
+ {
+  "fc": "LIO",
+  "insurance": "ST FRANCIS MED CTR-APPLECARE MCAL-I\/P",
+  "isContracted": true,
+  "reimbursementType": "APR-DRG"
+ },
+ {
+  "fc": "LIP",
+  "insurance": "AIDS HLTH FNDN\/POSITIVE HLTH MCL -I\/P",
+  "isContracted": true
+ },
+  {
+    "fc": "LIQ",
+    "insurance": "SCAN PROMISECARE MENIFEE -I/P",
+    "isContracted": true,
+    "reimbursementType": "APR-DRG"
+  },
+  {
+    "fc": "LIR",
+    "insurance": "CALOPTIMA/MEDI-CAL EXPANSION P",
+    "isContracted": true,
+    "reimbursementType": "APR-DRG"
+  },
+  {
+    "fc": "LIT",
+    "insurance": "ALTAMED HEALTH NETWORK MEDI-CA",
+    "isContracted": true,
+    "reimbursementType": "APR-DRG"
+  },
+  {
+    "fc": "LIU",
+    "insurance": "CAREMORE MEDICARE ADVANTAGE -I/P",
+    "isContracted": true,
+    "reimbursementType": "APR-DRG"
+  },
+  {
+    "fc": "LIW",
+    "insurance": "ALTAMED HEALTH NETWORK MEDI-CA",
+    "isContracted": true,
+    "reimbursementType": "APR-DRG"
+  },
+  {
+    "fc": "LIX",
+    "insurance": "MEDICARE MCAL SECONDARY     -I/P",
+    "isContracted": true,
+    "reimbursementType": "APR-DRG"
+  },
+ {
+  "fc": "LIZ",
+  "insurance": "CALOPTIMA\/MEDI-CAL EXPANSION PROG-I\/P",
+  "isContracted": true,
+  "reimbursementType": "APR-DRG"
+ },
+  {
+    "fc": "LK",
+    "insurance": "HUMANA HEALTHCARE PARTNERS SR",
+    "isContracted": true,
+    "reimbursementType": "APR-DRG"
+  },
+ {
+  "fc": "LL",
+  "insurance": "CAL OPTIMA HMO              -I\/P",
+  "isContracted": true,
+  "reimbursementType": "APR-DRG"
+ },
+ {
+  "fc": "LO",
+  "insurance": "KAISER MCAL                 -I\/P",
+  "isContracted": true,
+  "reimbursementType": "APR-DRG"
+ },
+ {
+  "fc": "LS",
+  "insurance": "LA CARE MEDI-CAL            -I\/P",
+  "isContracted": true,
+  "reimbursementType": "APR-DRG"
+ },
+ {
+  "fc": "LS1",
+  "insurance": "BEVERLY HOSPITAL MCL\/NMM -I\/P",
+  "isContracted": true,
+  "reimbursementType": "APR-DRG"
+ },
+ {
+  "fc": "LS2",
+  "insurance": "UNIVERSAL CARE BRAND NEW DAY MCAL -I\/P",
+  "isContracted": true,
+  "reimbursementType": "APR-DRG"
+ },
+ {
+  "fc": "LU",
+  "insurance": "HEALTH NET MCAL             -I\/P",
+  "isContracted": true,
+  "reimbursementType": "APR-DRG"
+ },
+ {
+  "fc": "M",
+  "insurance": "MEDICARE                    -I\/P",
+  "isContracted": true,
+  "reimbursementType": "MS-DRG"
+ },
+ {
+  "fc": "M2",
+  "insurance": "MEDICARE PART B ONLY        -I\/P",
+  "isContracted": true,
+  "reimbursementType": "APR-DRG"
+ },
+ {
+  "fc": "M7",
+  "insurance": "MEDICARE SECONDARY          -I\/P",
+  "isContracted": true,
+  "reimbursementType": "MS-DRG"
+ },
+ {
+  "fc": "M8",
+  "insurance": "MEDICARE MCAL SECONDARY     -I\/P",
+  "isContracted": true,
+  "reimbursementType": "MS-DRG"
+ },
+ {
+  "fc": "MA",
+  "insurance": "MEDICARE ODS                -I\/P",
+  "isContracted": true,
+  "reimbursementType": "ODS-REVIEW"
+ },
+ {
+  "fc": "MI1",
+  "insurance": "APA MEDICARE ACO            -I\/P",
+  "isContracted": true,
+  "reimbursementType": "MS-DRG"
+ },
+ {
+  "fc": "MI2",
+  "insurance": "APA MEDICARE ACO PART B ONLY-I\/P",
+  "isContracted": true,
+  "reimbursementType": "MS-DRG"
+ },
+ {
+  "fc": "MI3",
+  "insurance": "APA MEDICARE ACO SECONDARY  -I\/P",
+  "isContracted": true,
+  "reimbursementType": "MS-DRG"
+ },
+ {
+  "fc": "MQ",
+  "insurance": "MEDICARE QMB                -I\/P",
+  "isContracted": true,
+  "reimbursementType": "MS-DRG"
+ },
+ {
+  "fc": "MQ2",
+  "insurance": "MEDICARE QMB PART B ONLY    -I\/P",
+  "isContracted": true,
+  "reimbursementType": "MS-DRG"
+ },
+ {
+  "fc": "MQ7",
+  "insurance": "MEDICARE QMB SECONDARY      -I\/P",
+  "isContracted": true,
+  "reimbursementType": "MS-DRG"
+ },
+ {
+  "fc": "MS2",
+  "insurance": "MEDICARE OVERLAPPING FAC -I\/P",
+  "isContracted": true
+ },
+ {
+  "fc": "P2",
+  "insurance": "PRIVATE PAY FLAT RATE       -I\/P",
+  "isContracted": true,
+  "reimbursementType": "SELF PAY"
+ },
+ {
+  "fc": "P3",
+  "insurance": "CHARITY                     -I\/P",
+  "isContracted": true,
+  "reimbursementType": "SELF PAY"
+ },
+ {
+  "fc": "P4",
+  "insurance": "INDIGENT                    -I\/P",
+  "isContracted": true
+ },
+ {
+  "fc": "P7",
+  "insurance": "SELF PAY AB774              -I\/P",
+  "isContracted": true
+ },
+ {
+  "fc": "P9",
+  "insurance": "INTER-FACILITY BILLING      -I\/P",
+  "isContracted": true
+ },
+ {
+  "fc": "PA",
+  "insurance": "PAYMENT ARRANGEMENT         -I\/P",
+  "isContracted": true,
+  "reimbursementType": "SELF PAY"
+ },
+ {
+  "fc": "PC",
+  "insurance": "SELF PAY\/UNINSURED MEP      -I\/P",
+  "isContracted": true,
+  "reimbursementType": "APR-DRG"
+ },
+ {
+  "fc": "PD",
+  "insurance": "SUSAN G KOMEN (PRIVATE PAY) -I\/P",
+  "isContracted": true
+ },
+ {
+  "fc": "PE",
+  "insurance": "MSI PENDING                 -I\/P",
+  "isContracted": true,
+  "reimbursementType": "APR-DRG"
+ },
+ {
+  "fc": "PF",
+  "insurance": "SELF-PAY\/UNINSURED DISABILITY    -I\/P",
+  "isContracted": true
+ },
+ {
+  "fc": "PV",
+  "insurance": "CV-19 HRSA UNINSURED TESTING AND TX -I\/P",
+  "isContracted": true,
+  "reimbursementType": "MS-DRG"
+ },
+ {
+  "fc": "R",
+  "insurance": "ALTA L.A. HOSPITAL SR       -I\/P",
+  "isContracted": true,
+  "reimbursementType": "PER DIEM"
+ },
+ {
+  "fc": "R1",
+  "insurance": "SENIOR PLAN MISC            -I\/P",
+  "isContracted": true,
+  "reimbursementType": "MS-DRG"
+ },
+ {
+  "fc": "R2",
+  "insurance": "AETNA SENIOR PLAN HMO       -I\/P",
+  "isContracted": true,
+  "reimbursementType": "MS-DRG"
+ },
+ {
+  "fc": "R3",
+  "insurance": "MONARCH HEALTH PLAN SENIOR  -I\/P",
+  "isContracted": true,
+  "reimbursementType": "MS-DRG"
+ },
+ {
+  "fc": "R4",
+  "insurance": "CALVOS SELECT CARE SENIOR   -I\/P",
+  "isContracted": true,
+  "reimbursementType": "MS-DRG"
+ },
+ {
+  "fc": "RA",
+  "insurance": "CIGNA SENIOR                -I\/P",
+  "isContracted": true,
+  "reimbursementType": "MS-DRG"
+ },
+ {
+  "fc": "RH",
+  "insurance": "INTER VALLEY HEALTH PLAN    -I\/P",
+  "isContracted": true,
+  "reimbursementType": "MS-DRG"
+ },
+ {
+  "fc": "RI1",
+  "insurance": "DAVITA HEALTHCARE PARTNERS SR    -I\/P",
+  "isContracted": true
+ },
+ {
+  "fc": "RI2",
+  "insurance": "HEALTHCARE PARTNERS SR      -I\/P",
+  "isContracted": true,
+  "reimbursementType": "MS-DRG"
+ },
+ {
+  "fc": "RI3",
+  "insurance": "MD CARE HEALTH PLAN SR      -I\/P",
+  "isContracted": true,
+  "reimbursementType": "MS-DRG"
+ },
+ {
+  "fc": "RI4",
+  "insurance": "AHMC RECIPROCITY SR HSMSO   -I\/P",
+  "isContracted": true,
+  "reimbursementType": "PER DIEM"
+ },
+ {
+  "fc": "RI5",
+  "insurance": "CAREMORE HEALTH PLAN MED CONNECT -I\/P",
+  "isContracted": true,
+  "reimbursementType": "MS-DRG"
+ },
+ {
+  "fc": "RI7",
+  "insurance": "MISC MED CONNECT            -I\/P",
+  "isContracted": true,
+  "reimbursementType": "MS-DRG"
+ },
+ {
+  "fc": "RID",
+  "insurance": "HOSPICE                     -I\/P",
+  "isContracted": true,
+  "reimbursementType": "MS-DRG"
+ },
+ {
+  "fc": "RIH",
+  "insurance": "HUMANA MEDICARE             -I\/P",
+  "isContracted": true,
+  "reimbursementType": "MS-DRG"
+ },
+ {
+  "fc": "RIJ",
+  "insurance": "HCP\/HUNTINGTON MEM HOSPITAL SENIOR -I\/P",
+  "isContracted": true,
+  "reimbursementType": "MS-DRG"
+ },
+ {
+  "fc": "RIL",
+  "insurance": "ALTAMED HEALTH NETWORK MEDICARE ADV -I\/P",
+  "isContracted": true,
+  "reimbursementType": "MS-DRG"
+ },
+ {
+  "fc": "RIO",
+  "insurance": "AHMC RECIPROCITY MED CONNECT-I\/P",
+  "isContracted": true
+ },
+ {
+  "fc": "RIP",
+  "insurance": "AIDS HLTH FNDN\/POSITIVE HLTH MCARE -I\/P",
+  "isContracted": true
+ },
+ {
+  "fc": "RIQ",
+  "insurance": "LA CARE\/COVERED CALIFORNIA  -I\/P",
+  "isContracted": true,
+  "reimbursementType": "MS-DRG"
+ },
+ {
+  "fc": "RIR",
+  "insurance": "MOLINA CALIFORNIA BENEFIT EXCHANGE -I\/P",
+  "isContracted": true,
+  "reimbursementType": "MS-DRG"
+ },
+ {
+  "fc": "RIS",
+  "insurance": "KAISER COVERED CALIFORNIA   -I\/P",
+  "isContracted": true,
+  "reimbursementType": "% OF CHARGES"
+ },
+ {
+  "fc": "RIU",
+  "insurance": "MOLINA HEALTHCARE MED CONNECT    -I\/P",
+  "isContracted": true,
+  "reimbursementType": "MS-DRG"
+ },
+ {
+  "fc": "RIV",
+  "insurance": "LA CARE HEALTH PLAN MED CONNECT  -I\/P",
+  "isContracted": true,
+  "reimbursementType": "MS-DRG"
+ },
+ {
+  "fc": "RIW",
+  "insurance": "CALOPTIMA ONECARE MEDICONNECT    -I\/P",
+  "isContracted": true,
+  "reimbursementType": "MS-DRG"
+ },
+ {
+  "fc": "RIX",
+  "insurance": "HEALTHNET MED CONNECT       -I\/P",
+  "isContracted": true,
+  "reimbursementType": "MS-DRG"
+ },
+ {
+  "fc": "RIY",
+  "insurance": "BLUE SHIELD PROMISE MED CONNECT -I\/P",
+  "isContracted": true,
+  "reimbursementType": "MS-DRG"
+ },
+ {
+  "fc": "RIZ",
+  "insurance": "MONARCH ONECARE CONNECT     -I\/P",
+  "isContracted": true,
+  "reimbursementType": "MS-DRG"
+ },
+ {
+  "fc": "RK",
+  "insurance": "HEALTH NET MEDICARE HMO     -I\/P",
+  "isContracted": true,
+  "reimbursementType": "MS-DRG"
+ },
+ {
+  "fc": "RL",
+  "insurance": "KAISER FOUNDATION SENIOR    -I\/P",
+  "isContracted": true,
+  "reimbursementType": "MS-DRG"
+ },
+ {
+  "fc": "RM1",
+  "insurance": "ST FRANCIS MEDICAL CENTER MEDICARE-I\/P",
+  "isContracted": true,
+  "reimbursementType": "MS-DRG"
+ },
+ {
+  "fc": "RM2",
+  "insurance": "ST VINCENT MEDICAL CENTER MEDICARE-I\/P",
+  "isContracted": true,
+  "reimbursementType": "MS-DRG"
+ },
+ {
+  "fc": "RM3",
+  "insurance": "ST FRANCIS MED CTR-APPLECARE MCARE-I\/P",
+  "isContracted": true,
+  "reimbursementType": "MS-DRG"
+ },
+ {
+  "fc": "RM4",
+  "insurance": "SEOUL MEDICAL GROUP SENIOR -I\/P",
+  "isContracted": true
+ },
+ {
+  "fc": "RQ",
+  "insurance": "SECURE HORIZONS             -I\/P",
+  "isContracted": true,
+  "reimbursementType": "MS-DRG"
+ },
+ {
+  "fc": "RS",
+  "insurance": "CENTRAL HEALTH MEDICARE\/SR  -I\/P",
+  "isContracted": true,
+  "reimbursementType": "MS-DRG"
+ },
+ {
+  "fc": "RS1",
+  "insurance": "ST FRANCIS MED CENTER MEDICONNECT-I\/P",
+  "isContracted": true
+ },
+ {
+  "fc": "RS2",
+  "insurance": "ST VINCENT MED CENTER MEDICONNECT-I\/P",
+  "isContracted": true
+ },
+ {
+  "fc": "RS3",
+  "insurance": "ST FRANCIS-APPLECARE MEDICONNECT -I\/P",
+  "isContracted": true,
+  "reimbursementType": "MS-DRG"
+ },
+ {
+  "fc": "RS4",
+  "insurance": "APA ACO SENIOR              -I\/P",
+  "isContracted": true
+ },
+ {
+  "fc": "RS6",
+  "insurance": "UNIVERSAL CARE BRAND NEW DAY MCARE -I\/P",
+  "isContracted": true,
+  "reimbursementType": "MS-DRG"
+ },
+ {
+  "fc": "RS8",
+  "insurance": "CALOPTIMA PACE PROGRAM SENIOR -I\/P",
+  "isContracted": true,
+  "reimbursementType": "MS-DRG"
+ },
+ {
+  "fc": "RS9",
+  "insurance": "BEVERLY HOSPITAL MCARE\/NMM -I\/P",
+  "isContracted": true
+ },
+ {
+  "fc": "RU",
+  "insurance": "CAREMORE MEDICARE ADVANTAGE -I\/P",
+  "isContracted": true,
+  "reimbursementType": "MS-DRG"
+ },
+ {
+  "fc": "RV",
+  "insurance": "ALIGNMENT HEALTHCARE\/CCHP   -I\/P",
+  "isContracted": true,
+  "reimbursementType": "MS-DRG"
+ },
+ {
+  "fc": "S",
+  "insurance": "CHAMPUS\/CHAMPVA             -I\/P",
+  "isContracted": true,
+  "reimbursementType": "MS-DRG"
+ },
+ {
+  "fc": "S1",
+  "insurance": "TRICARE                     -I\/P",
+  "isContracted": true,
+  "reimbursementType": "MS-DRG"
+ },
+ {
+  "fc": "T1",
+  "insurance": "CAL OPTIMA ONE CARE SR      -I\/P",
+  "isContracted": true,
+  "reimbursementType": "MS-DRG"
+ },
+ {
+  "fc": "T2",
+  "insurance": "CIGNA COMM HMO\/OPEN ACCESS  -I\/P",
+  "isContracted": true,
+  "reimbursementType": "PER DIEM"
+ },
+ {
+  "fc": "T3",
+  "insurance": "ARTA MEDICARE HEALTH PLAN   -I\/P",
+  "isContracted": true
+ },
+ {
+  "fc": "T6",
+  "insurance": "HERITAGE PROVIDER NETWORK SR-I\/P",
+  "isContracted": true,
+  "reimbursementType": "MS-DRG"
+ },
+ {
+  "fc": "T7",
+  "insurance": "PROSPECT HEALTH PLAN SR     -I\/P",
+  "isContracted": true,
+  "reimbursementType": "PER DIEM"
+ },
+ {
+  "fc": "TL",
+  "insurance": "SCAN HEALTHPLAN SENIOR PREFERRED -I\/P",
+  "isContracted": true
+ },
+ {
+  "fc": "TT",
+  "insurance": "TALBERT MED GRP\/SECURE HORIZONS  -I\/P",
+  "isContracted": true
+ },
+ {
+  "fc": "TZ",
+  "insurance": "APPLECARE IPA SENIOR        -I\/P",
+  "isContracted": true
+ },
+ {
+  "fc": "U3",
+  "insurance": "MEDICAL SAFETY NET (MSN) PROGRAM -I\/P",
+  "isContracted": true,
+  "reimbursementType": "PER DIEM"
+ },
+ {
+  "fc": "U7",
+  "insurance": "HIGHMARK SERVICES(SECTION 1011)  -I\/P",
+  "isContracted": true,
+  "reimbursementType": "MS-DRG"
+ },
+ {
+  "fc": "W1",
+  "insurance": "WORKERS COMP INDEMNITY      -I\/P",
+  "isContracted": true,
+  "reimbursementType": "WORK COMP PRICING"
+ },
+ {
+  "fc": "W2",
+  "insurance": "CIGNA WORKMANS COMPENSATION -I\/P",
+  "isContracted": true,
+  "reimbursementType": "WORK COMP PRICING"
+ },
+ {
+  "fc": "W3",
+  "insurance": "ANGELS BASEBALL WORK COMP   -I\/P",
+  "isContracted": true,
+  "reimbursementType": "WORK COMP PRICING"
+ },
+ {
+  "fc": "W4",
+  "insurance": "MARRIOT WORK COMP           -I\/P",
+  "isContracted": true,
+  "reimbursementType": "WORK COMP PRICING"
+ },
+ {
+  "fc": "W7",
+  "insurance": "ESIS WEST WORKERS COMP      -I\/P",
+  "isContracted": true,
+  "reimbursementType": "WORK COMP PRICING"
+ },
+ {
+  "fc": "WD",
+  "insurance": "BEECH ST WC                 -I\/P",
+  "isContracted": true,
+  "reimbursementType": "WORK COMP PRICING"
+ },
+ {
+  "fc": "WF",
+  "insurance": "CORVEL WORK COMP            -I\/P",
+  "isContracted": true,
+  "reimbursementType": "WORK COMP PRICING"
+ },
+ {
+  "fc": "WG",
+  "insurance": "ORANGE COUNTY PPO\/EPO WORK COMP  -I\/P",
+  "isContracted": true,
+  "reimbursementType": "WORK COMP PRICING"
+ },
+ {
+  "fc": "WK",
+  "insurance": "HEALTH NET WORKERS COMP     -I\/P",
+  "isContracted": true,
+  "reimbursementType": "WORK COMP PRICING"
+ },
+ {
+  "fc": "WN",
+  "insurance": "INTERPLAN WC                -I\/P",
+  "isContracted": true,
+  "reimbursementType": "WORK COMP PRICING"
+ },
+ {
+  "fc": "WZ",
+  "insurance": "FIRST HEALTH NETWORK WC     -I\/P",
+  "isContracted": true,
+  "reimbursementType": "WORK COMP PRICING"
+ },
+ {
+  "fc": "X1",
+  "insurance": "MEDI-CAL\/MEDICAID           -I\/P",
+  "isContracted": true,
+  "reimbursementType": "APR-DRG"
+ },
+ {
+  "fc": "X2",
+  "insurance": "MEDI CAL MEDICAID 2ND       -I\/P",
+  "isContracted": true,
+  "reimbursementType": "APR-DRG"
+ },
+ {
+  "fc": "X3",
+  "insurance": "MEDI-CAL PENDING TAR        -I\/P",
+  "isContracted": true,
+  "reimbursementType": "APR-DRG"
+ },
+ {
+  "fc": "X4",
+  "insurance": "MEDI-CAL PTN APPROVAL       -I\/P",
+  "isContracted": true,
+  "reimbursementType": "APR-DRG"
+ },
+ {
+  "fc": "X5",
+  "insurance": "MEDI-CAL RESTRICTED         -I\/P",
+  "isContracted": true,
+  "reimbursementType": "APR-DRG"
+ },
+ {
+  "fc": "X8",
+  "insurance": "MEDICAID OUT OF STATE       -I\/P",
+  "isContracted": true,
+  "reimbursementType": "APR-DRG"
+ },
+ {
+  "fc": "XC",
+  "insurance": "MEDI-CAL\/MEDICAID MEP SCREENING  -I\/P",
+  "isContracted": true
+ },
+ {
+  "fc": "XE",
+  "insurance": "MEDI-CAL PRESUMPTIVE ELIG   -I\/P",
+  "isContracted": true,
+  "reimbursementType": "APR-DRG"
+ },
+ {
+  "fc": "XJ",
+  "insurance": "MEDI-CAL FAMILY PACT        -I\/P",
+  "isContracted": true,
+  "reimbursementType": "APR-DRG"
+ },
+ {
+  "fc": "XL",
+  "insurance": "MEDI\/CALOPTIMA 2NDARY       -I\/P",
+  "isContracted": true,
+  "reimbursementType": "APR-DRG"
+ },
+ {
+  "fc": "XM2",
+  "insurance": "MCAL MCARE PART B           -I\/P ONLY",
+  "isContracted": true,
+  "reimbursementType": "APR-DRG"
+ },
+ {
+  "fc": "XS",
+  "insurance": "MEDI-CAL\/MEDICAID           -I\/P SOC",
+  "isContracted": true,
+  "reimbursementType": "APR-DRG"
+ },
+ {
+  "fc": "XX",
+  "insurance": "CCS ORANGE COUNTY           -I\/P",
+  "isContracted": true,
+  "reimbursementType": "APR-DRG"
+ }
+]

@@ -3,8 +3,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Identity.Web.Resource;
 using Zhealthcare.Service.Application.ImportFile;
-using Zhealthcare.Service.Application.Patients.Commands;
-using Zhealthcare.Service.Application.Patients.Models;
 
 namespace Zhealthcare.Service.Controllers
 {
@@ -12,7 +10,6 @@ namespace Zhealthcare.Service.Controllers
     [ApiController]
     [Authorize]
     [RequiredScope("patients.read")]
-    [AllowAnonymous]
     public class ImportFileController : ControllerBase
     {
 
