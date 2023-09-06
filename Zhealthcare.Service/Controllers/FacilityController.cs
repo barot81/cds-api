@@ -10,7 +10,6 @@ namespace Zhealthcare.Service.Controllers
     [ApiController]
     [Authorize]
     [RequiredScope("patients.read")]
-    [AllowAnonymous]
     public class FacilityController : ControllerBase
     {
         private readonly IMediator _mediator;
