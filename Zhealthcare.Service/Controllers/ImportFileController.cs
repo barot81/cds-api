@@ -10,6 +10,7 @@ namespace Zhealthcare.Service.Controllers
     [ApiController]
     [Authorize]
     [RequiredScope("patients.read")]
+    [AllowAnonymous]
     public class ImportFileController : ControllerBase
     {
 

@@ -16,7 +16,8 @@ namespace Zhealthcare.Service.Application.Patients.Commands
         {
             var patient = await _repository.GetAsync(request.Id.ToString(), request.FacilityId, cancellationToken);
             patient.ReviewStatus = request.ReviewStatus;
-            patient.GeneralComment = request.GeneralComments;
+            request.GeneralComments.AddedOn = DateTime.UtcNow;
+            patient.FollowUpComments.Add(request.GeneralComments);
             var result = await _repository.UpdateAsync(patient, false, cancellationToken);
             return result == null ? Guid.Empty : Guid.Parse(result.Id);
         }

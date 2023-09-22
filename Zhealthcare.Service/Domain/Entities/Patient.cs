@@ -27,9 +27,7 @@ namespace Zhealthcare.Service.Domain.Entities
         public string PatientClass { get; set; } = string.Empty;
         public string StatusClass { get; set; } = string.Empty;
         public string ReviewStatus { get; set; } = string.Empty;
-
-        public GeneralComment GeneralComment { get; set; } = new();
-
+        public List<GeneralComment> FollowUpComments { get; set; } = new();
         public string UmReviewer { get; set; } = string.Empty;
         public string Dcp { get; set; } = string.Empty;
         public string PatientType { get; set; } = string.Empty;

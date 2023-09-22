@@ -29,7 +29,9 @@ namespace Zhealthcare.Service.Application.Patients.Commands
             patient.ReviewStatus = PatientDto.ReviewStatus;
             patient.LastUpdatedDate = DateTime.UtcNow;
             patient.Type = typeof(Patient).Name;
-            patient.GeneralComment = PatientDto.GeneralComment;
+            if (patient.FollowUpComments == null)
+                patient.FollowUpComments = new();
+            patient.FollowUpComments.Add(PatientDto.GeneralComment);
             return patient;
         }
     }

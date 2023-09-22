@@ -11,7 +11,7 @@ namespace Zhealthcare.Service.Controllers
 {
     [Route("api/")]
     [ApiController]
-    [Authorize]
+    [AllowAnonymous]
     [RequiredScope("patients.read")]
     public class PatientsController : ControllerBase
     {

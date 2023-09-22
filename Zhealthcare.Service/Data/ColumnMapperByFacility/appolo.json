@@ -1,5 +1,5 @@
 {
-    "FacilityId": "Appolo",
+  "FacilityId": "Appolo",
   "Mapper": {
     "PatientNo": "Patient #",
     "PatientName":"Patient Name",
@@ -24,32 +24,5 @@
     "Geo":"GEO",
     "Diff": "DIFF",
     "RelWt":"Rel Wt"
-  },
-    "Sample": {
-        "UM Reviewer": "Melissa Pager# 44028 Ext. 6150",
-        "DCP": "Cindy Pager# 49767 Ext. 3182",
-        "Room": "C1011",
-        "Patient Name": "JIMENEZ JESUS",
-        "Patient #": 81798976,
-        "Sex": "M",
-        "Age": "85",
-        "Type": "1",
-        "Admit Date": "08/05/2023",
-        "CUR": "3",
-        "FC": "R1",
-        "FC Name": "UHC SR /ST JOSEPH",
-        "Secondary Physician": "ZZI ST JOSEPH HOSP AFFILI PHYS",
-        "DRG Diagnosis": 	"871	SEPTICEMIA OR SEVERE SEPSIS WITHOUT MV >96 HOURS WITH MCC",
-        "Chief Complaint": "SEPSIS ALTERED",
-        "Attending Physician": "LE TAMMY H",
-        "Admit Origin": "07",
-        "Origin Desc": "ER",
-        "GEO": "5.0",
-        "Transfer DRG": "",
-        "DIFF": "-2.0",
-        "Rel Wt": " 1.9572",
-        "Admits 30-day": "",
-        "IM Given": "",
-        "Comments": ""
-    }
+  }
 }
