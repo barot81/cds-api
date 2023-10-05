@@ -54,7 +54,7 @@ namespace Zhealthcare.Service.Application.Patients.Queries
                 return "";
             if (filters.ReviewStatus != null) {
                 if (filters.ReviewStatus.First().StartsWith("Total")) {
-                    filterQuery += " AND c.dischargeDate == null and LOWER(c.reviewStatus) != 'non drg'";
+                    filterQuery += " AND c.dischargeDate = null and LOWER(c.reviewStatus) != 'non drg'";
                 }
                 else
                     filterQuery += " AND ARRAY_CONTAINS(@statuses, c.reviewStatus)";
