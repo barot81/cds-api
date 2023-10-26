@@ -33,7 +33,10 @@ namespace Zhealthcare.Service.Domain.Entities
         public string PatientType { get; set; } = string.Empty;
         public string SecondaryPhysician { get; set; } = string.Empty;
         public string DrgNo { get; set; } = string.Empty;
-        public string Diagnosis { get; set; } = string.Empty;
+        public string? Diagnosis { get; set; }
+        public string? DrgWeight { get; set; }
+        public string? DrgType { get; set; } 
+        public string? TransferDrg { get; set; }
         public string ChiefComplaint { get; set; } = string.Empty;
         public string AttendingPhysician { get; set; } = string.Empty;
         public string AdmitOrigin { get; set; } = string.Empty;
