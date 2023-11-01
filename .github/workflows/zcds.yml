@@ -2,7 +2,7 @@ name: Build and deploy .NET Core application to Web App zcds
 on:
   push:
     branches:
-    - main
+    - main_1
 env:
   AZURE_WEBAPP_NAME: zcds
   AZURE_WEBAPP_PACKAGE_PATH: Zhealthcare.Service
