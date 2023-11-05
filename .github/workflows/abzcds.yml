@@ -2,9 +2,9 @@ name: Build and deploy .NET Core application to Web App zcds
 on:
   push:
     branches:
-    - main_1
+    - main
 env:
-  AZURE_WEBAPP_NAME: zcds
+  AZURE_WEBAPP_NAME: abzcds
   AZURE_WEBAPP_PACKAGE_PATH: Zhealthcare.Service
   CONFIGURATION: Release
   DOTNET_CORE_VERSION: 6.0.x
@@ -53,5 +53,5 @@ jobs:
       uses: azure/webapps-deploy@v2
       with:
         app-name: ${{ env.AZURE_WEBAPP_NAME }}
-        publish-profile: ${{ secrets.zcds_FE84 }}
+        publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_D2386B7947A0436794D1A3517770D541 }}
         package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
