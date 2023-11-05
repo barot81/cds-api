@@ -52,15 +52,15 @@ namespace Zhealthcare.Service.Application.Patients.Queries
             {
                 if (msDrgNos.Contains(item.DrgNo)) {
                     var currentDrg = msDrgLookups.FirstOrDefault(x => x.DrgNo == item.DrgNo);
-                    item.DrgWeight = currentDrg.Weights;
-                    item.DrgType = currentDrg.DrgType;
-                    item.TransferDrg = currentDrg.IsPostAcuteDrg;
+                    item.DrgWeight = currentDrg?.Weights ;
+                    item.DrgType = currentDrg?.DrgType;
+                    item.TransferDrg = currentDrg?.IsPostAcuteDrg;  
                 }
                 else if (aprDrgNos.Contains(item.DrgNo))
                 {
                     var currentDrg = aprDrgLookups.FirstOrDefault(x => x.DrgNo == item.DrgNo);
-                    item.DrgWeight = currentDrg.RelativeWeight;
-                    item.DrgType = currentDrg.PediatricMedicaidCareCategory;
+                    item.DrgWeight = currentDrg?.RelativeWeight;
+                    item.DrgType = currentDrg?.PediatricMedicaidCareCategory;
                     item.TransferDrg = "-";
                 }
                 

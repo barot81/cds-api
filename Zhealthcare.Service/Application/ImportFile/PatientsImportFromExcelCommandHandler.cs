@@ -30,7 +30,7 @@ namespace Zhealthcare.Service.Application.ImportFile
                 patient.ReviewStatus  = 
                     patient.ReimbursementType.ToLower().Contains("apr-drg") 
                     || patient.ReimbursementType.ToLower().Contains("ms-drg")
-                    ? "New DRG"
+                    ? "New"
                     : "Non DRG";
                 await _mediator.Send(new CreatePatientCommand(request.FacilityId, patient), cancellationToken);
             }
