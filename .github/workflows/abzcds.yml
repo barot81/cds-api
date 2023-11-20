@@ -1,4 +1,4 @@
-name: Build and deploy .NET Core application to Web App zcds
+name: using private cosmos link Build and deploy .NET Core application to Web App zcds
 on:
   push:
     branches:
