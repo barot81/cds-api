@@ -12,6 +12,7 @@ namespace Zhealthcare.Service.Controllers
     [Route("api/")]
     [ApiController]
     [RequiredScope("patients.read")]
+    [Authorize]
     public class PatientsController : ControllerBase
     {
 

@@ -9,6 +9,7 @@ namespace Zhealthcare.Service.Controllers
     [Route("api/")]
     [ApiController]
     [RequiredScope("patients.read")]
+    [Authorize]
     public class LookupsController : ControllerBase
     {
         private readonly IMediator _mediator;
