@@ -1,4 +1,4 @@
-name: Build and deploy .NET Core application to Web App zcds
+name: using private cosmos link Build and deploy .NET Core application to Web App zcds
 on:
   push:
     branches:
@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-  
+        
     - name: Setup .NET SDK
       uses: actions/setup-dotnet@v3
       with:
@@ -28,7 +28,7 @@ jobs:
 
     - name: Test
       run: dotnet test "${{ env.WORKING_DIRECTORY }}" --no-build
-
+      
     - name: Publish
       run: dotnet publish "${{ env.WORKING_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} --no-build --output "${{ env.AZURE_WEBAPP_PACKAGE_PATH }}"
 
