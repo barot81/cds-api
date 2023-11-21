@@ -14,11 +14,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    
-    - name: Clean artifacts
-      run: |
-        # Remove existing artifacts
-        rm -rf ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
         
     - name: Setup .NET SDK
       uses: actions/setup-dotnet@v3
@@ -33,7 +28,12 @@ jobs:
 
     - name: Test
       run: dotnet test "${{ env.WORKING_DIRECTORY }}" --no-build
-
+      
+    - name: Clean artifacts
+      run: |
+        # Remove existing artifacts
+        rm -rf ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+    
     - name: Publish
       run: dotnet publish "${{ env.WORKING_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} --no-build --output "${{ env.AZURE_WEBAPP_PACKAGE_PATH }}"
 
