@@ -19,7 +19,7 @@ namespace Zhealthcare.Service.Application.Patients.Commands
             if (!string.IsNullOrWhiteSpace(request.GeneralComments.Comments))
             {
                 request.GeneralComments.AddedOn = DateTime.UtcNow;
-                patient.FollowUpComments.Add(request.GeneralComments);
+                patient.FollowupComments.Add(request.GeneralComments);
             }
             var result = await _repository.UpdateAsync(patient, false, cancellationToken);
             return result == null ? Guid.Empty : Guid.Parse(result.Id);
