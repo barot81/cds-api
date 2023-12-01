@@ -14,13 +14,13 @@ namespace Zhealthcare.Service.Application.Patients.Commands
 
         public async Task<Guid> Handle(UpdatePatientCommentRequest request, CancellationToken cancellationToken)
         {
+            if (string.IsNullOrWhiteSpace(request.GeneralComments.Comments))
+                return Guid.Empty;
+
             var patient = await _repository.GetAsync(request.Id.ToString(), request.FacilityId, cancellationToken);
             patient.ReviewStatus = request.ReviewStatus;
-            if (!string.IsNullOrWhiteSpace(request.GeneralComments.Comments))
-            {
-                request.GeneralComments.AddedOn = DateTime.UtcNow;
-                patient.FollowupComments.Add(request.GeneralComments);
-            }
+            request.GeneralComments.AddedOn = DateTime.UtcNow;
+            patient.FollowupComments.Add(request.GeneralComments);
             var result = await _repository.UpdateAsync(patient, false, cancellationToken);
             return result == null ? Guid.Empty : Guid.Parse(result.Id);
         }

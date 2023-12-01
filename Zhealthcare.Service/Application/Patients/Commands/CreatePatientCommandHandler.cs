@@ -17,9 +17,9 @@ namespace Zhealthcare.Service.Application.Patients.Commands
             var patient = command.PatientDto.Adapt<Patient>();
             patient.Id = Guid.NewGuid().ToString();
             patient.CreatedDate = DateTime.UtcNow;
+            patient.LastUpdatedDate = DateTime.UtcNow;
             patient.PartitionKey = command.FacilityId;
             patient.Type = nameof(Patient);
-
             return await _repository.CreateAsync(patient, cancellationToken);
         }
     }

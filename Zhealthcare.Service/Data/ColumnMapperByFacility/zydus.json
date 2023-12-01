@@ -1,0 +1,28 @@
+{
+  "FacilityId": "zydus",
+  "Mapper": {
+    "PatientNo": "Patient #",
+    "PatientName": "Patient Name",
+    "Room": "Room",
+    "Age": "Age",
+    "Sex": "Sex",
+    "Los": "CUR",
+    "FinancialClass": "FC Name",
+    "AdmitDate": "Admit Date",
+    "ReimbursementType": "FC",
+    "GeneralComment.Comments": "Comments",
+    "UmReviewer": "UM Reviewer",
+    "Dcp": "DCP",
+    "PatientType": "Type",
+    "SecondaryPhysician": "Secondary Physician",
+    "DrgNo": "DRG",
+    "Diagnosis": "Diagnosis",
+    "ChiefComplaint": "Chief Complaint",
+    "AttendingPhysician": "Attending Physician",
+    "AdmitOrigin": "Admit Origin",
+    "OriginDesc": "Origin Desc",
+    "Geo": "GEO",
+    "Diff": "DIFF",
+    "RelWt": "Rel Wt"
+  }
+}

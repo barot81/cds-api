@@ -4,7 +4,6 @@ using OfficeOpenXml;
 using Zhealthcare.Service.Application.Patients.Commands;
 using Zhealthcare.Service.Application.Patients.Models;
 using Zhealthcare.Service.Application.Patients.Queries;
-using Zhealthcare.Service.Domain.Entities;
 using Zhealthcare.Service.Helper;
 using Zhealthcare.Service.Models;
 

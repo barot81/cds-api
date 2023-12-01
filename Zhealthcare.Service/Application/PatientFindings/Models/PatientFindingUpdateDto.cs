@@ -18,7 +18,7 @@ namespace Zhealthcare.Service.Application.PatientFindings.Models
         public string ExpectedDrgDescription { get; set; } = string.Empty;
         public double ExpectedWeight { get; set; }
         public double ExpectedGmlos { get; set; } 
-        public DateTime ResponseDate { get; set; } 
+        public DateTime? ResponseDate { get; set; } 
         public string ResponseType { get; set; } = string.Empty;
         public string ResponseComment { get; set; } = string.Empty;
         public string FollowupComment { get; set; } = string.Empty;
