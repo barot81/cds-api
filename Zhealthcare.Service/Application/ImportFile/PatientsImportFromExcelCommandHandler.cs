@@ -1,9 +1,11 @@
 ﻿using Mapster;
 using MediatR;
 using OfficeOpenXml;
+using Zhealthcare.Service.Application.Lookups;
 using Zhealthcare.Service.Application.Patients.Commands;
 using Zhealthcare.Service.Application.Patients.Models;
 using Zhealthcare.Service.Application.Patients.Queries;
+using Zhealthcare.Service.Domain.Entities.Drg;
 using Zhealthcare.Service.Helper;
 using Zhealthcare.Service.Models;
 
@@ -12,8 +14,10 @@ namespace Zhealthcare.Service.Application.ImportFile
     public class PatientsImportFromExcelCommandHandler : IRequestHandler<PatientsImportFromExcelCommand, ImportFileResponse>
     {
         private readonly IMediator _mediator;
+
         public PatientsImportFromExcelCommandHandler(IMediator mediator)
         => _mediator = mediator;
+
 
         public async Task<ImportFileResponse> Handle(PatientsImportFromExcelCommand request, CancellationToken cancellationToken)
         {
@@ -22,22 +26,30 @@ namespace Zhealthcare.Service.Application.ImportFile
             var patientNos = patients.Select(x => x.PatientNo).ToList();
             var existingPatients = await _mediator.Send(new GetAllNonDischagePatientsQuery(request.FacilityId), cancellationToken);
             HashSet<long> existingPatientNos = new(existingPatients.Select(x => x.PatientNo));
-            var newPatients = patients.Where(x=> !existingPatientNos.Contains(x.PatientNo));
-            foreach(var patient in newPatients)
+            var newPatients = patients.Where(x => !existingPatientNos.Contains(x.PatientNo));
+            var msDrgLookup = await _mediator.Send(new GetMsDrgLookupRequest(), cancellationToken);
+            var aprDrgLookup = await _mediator.Send(new GetMsDrgLookupRequest(), cancellationToken);
+            foreach (var patient in newPatients)
             {
-                patient.ReimbursementType = contracts.FirstOrDefault(x => x.Insurance == patient.FinancialClass)?.ReimbursementType ?? "Non DRG";
-                patient.ReviewStatus  = 
-                    patient.ReimbursementType.ToLower().Contains("apr-drg") 
-                    || patient.ReimbursementType.ToLower().Contains("ms-drg")
-                    ? "New"
-                    : "Non DRG";
+                if (msDrgLookup.Items.Any(x => x.DrgNo == patient.DrgNo))
+                    patient.ReimbursementType = "MS-DRG";
+                else if (aprDrgLookup.Items.Any(x => x.DrgNo == patient.DrgNo))
+                    patient.ReimbursementType = "APR-DRG";
+                else
+                    patient.ReimbursementType = contracts.FirstOrDefault(x => x.Insurance == patient.FinancialClass)?.ReimbursementType ?? "Non DRG";
+                patient.ReviewStatus =
+                   patient.ReimbursementType.ToLower().Contains("apr-drg")
+                   || patient.ReimbursementType.ToLower().Contains("ms-drg")
+                   ? "New"
+                   : "Non DRG";
+
                 await _mediator.Send(new CreatePatientCommand(request.FacilityId, patient), cancellationToken);
             }
-            foreach(var patient in existingPatients)
+            foreach (var patient in existingPatients)
             {
                 if (!patientNos.Contains(patient.PatientNo))
                     patient.DischargeDate = DateTime.UtcNow.AddDays(-1);
-                await _mediator.Send(new UpdatePatientCommand(patient.Id,request.FacilityId, patient.Adapt<PatientUpdateDto>()), cancellationToken);
+                await _mediator.Send(new UpdatePatientCommand(patient.Id, request.FacilityId, patient.Adapt<PatientUpdateDto>()), cancellationToken);
             }
             return new ImportFileResponse(true, Enumerable.Empty<ErrorDetail>());
         }

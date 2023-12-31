@@ -31,7 +31,6 @@ namespace Zhealthcare.Service.Configurations
                 {
                     options.CosmosConnectionString = $"AccountEndpoint={cosmosConfig!.EndpointUrl};AccountKey={cosmosConfig!.AuthorizationKey};";
                     options.DatabaseId = cosmosConfig?.Connections?["Patients"].DatabaseName ?? string.Empty;
-                    //options.ContainerId = cosmosConfig?.Connections?["Patients"].CollectionName ?? string.Empty;
                     options.ContainerPerItemType = true;
                     string lookupContainer = cosmosConfig?.Connections?["Lookups"].CollectionName ?? string.Empty;
                     string patientContainer = cosmosConfig?.Connections?["Patients"].CollectionName ?? string.Empty;

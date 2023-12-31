@@ -124,7 +124,7 @@ namespace Zhealthcare.Utility
                 patient.Concurrent_postDC = ConcurrentPostDc[rnd.Next(ConcurrentPostDc.Count)];
                 patient.Mrn = $"M{GenerateRandomNumber()}";
                 patient.Los = Convert.ToInt32(patient.Cur);
-                patient.DrgNo = patient.Drg;
+                patient.DrgNo = patient.DrgNo ?? "";
                 patient.QueryStatus = QueryStatuses[rnd.Next(QueryStatuses.Count)];
                 patient.ReimbursementType = contract.FirstOrDefault(x => x.Fc == patient.FinancialClass)?.ReimbursementType ?? "Non DRG";
                 patient.SecondaryInsurance = contract[rnd.Next(contract.Count)].Insurance;
