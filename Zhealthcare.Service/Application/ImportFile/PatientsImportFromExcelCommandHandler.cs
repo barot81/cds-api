@@ -1,5 +1,6 @@
 ﻿using Mapster;
 using MediatR;
+using Microsoft.Azure.Cosmos.Serialization.HybridRow;
 using OfficeOpenXml;
 using Zhealthcare.Service.Application.Lookups;
 using Zhealthcare.Service.Application.Patients.Commands;
@@ -66,7 +67,7 @@ namespace Zhealthcare.Service.Application.ImportFile
             var noOfColumns = headerRow.End.Column;
             for (int col = 1; col <= noOfColumns; col++)
             {
-                var columnName = headerRow[1, col].Text;
+                var columnName = headerRow[1, col].Text.Replace("\n", " ");
                 var key = conlumnConfig.Mapper.FirstOrDefault(x => x.Value == columnName).Key;
                 if (!string.IsNullOrWhiteSpace(key))
                     columnIndexes[key] = col;
@@ -118,6 +119,9 @@ namespace Zhealthcare.Service.Application.ImportFile
             var finalProperty = currentObject.GetType().GetProperty(finalPropertyName);
             if (finalProperty != null && propertyValue != null)
             {
+                if(finalPropertyName.EndsWith("Date", StringComparison.InvariantCultureIgnoreCase) 
+                    && double.TryParse(propertyValue.ToString(), out double numericDate))
+                    propertyValue = DateTime.FromOADate(numericDate);  
                 finalProperty.SetValue(currentObject, Convert.ChangeType(propertyValue, finalProperty.PropertyType));
             }
         }
