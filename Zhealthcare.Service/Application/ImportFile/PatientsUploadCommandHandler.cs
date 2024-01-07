@@ -11,8 +11,12 @@ namespace Zhealthcare.Service.Application.ImportFile
     public class PatientsUploadCommandHandler : IRequestHandler<PatientsUploadCommand, ImportFileResponse>
     {
         private readonly IMediator _mediator;
-        public PatientsUploadCommandHandler(IMediator mediator)
-        => _mediator = mediator;
+        private readonly UserContext _userContext;
+        public PatientsUploadCommandHandler(IMediator mediator, UserContext userContext)
+        {
+            _mediator = mediator;
+            _userContext = userContext;
+        }
 
         public async Task<ImportFileResponse> Handle(PatientsUploadCommand request, CancellationToken cancellationToken)
         {
@@ -29,7 +33,7 @@ namespace Zhealthcare.Service.Application.ImportFile
             {
                 if (!patientNos.Contains(patient.PatientNo))
                     patient.DischargeDate = DateTime.UtcNow.AddDays(-1);
-                await _mediator.Send(new UpdatePatientCommand(patient.Id,request.FacilityId, patient.Adapt<PatientUpdateDto>()), cancellationToken);
+                await _mediator.Send(new UpdatePatientCommand(patient.Id,request.FacilityId, patient.Adapt<PatientUpdateDto>(), _userContext.Name), cancellationToken);
             }
             return new ImportFileResponse(true, Enumerable.Empty<ErrorDetail>());
         }

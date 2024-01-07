@@ -15,10 +15,13 @@ namespace Zhealthcare.Service.Application.ImportFile
     public class PatientsImportFromExcelCommandHandler : IRequestHandler<PatientsImportFromExcelCommand, ImportFileResponse>
     {
         private readonly IMediator _mediator;
+        private readonly UserContext _userContext;
 
-        public PatientsImportFromExcelCommandHandler(IMediator mediator)
-        => _mediator = mediator;
-
+        public PatientsImportFromExcelCommandHandler(IMediator mediator, UserContext userContext)
+        {
+            _mediator = mediator;
+            _userContext = userContext;
+        }
 
         public async Task<ImportFileResponse> Handle(PatientsImportFromExcelCommand request, CancellationToken cancellationToken)
         {
@@ -32,12 +35,14 @@ namespace Zhealthcare.Service.Application.ImportFile
             var aprDrgLookup = await _mediator.Send(new GetMsDrgLookupRequest(), cancellationToken);
             foreach (var patient in newPatients)
             {
+                var selectedContract = contracts.FirstOrDefault(x => x.Fc == patient.ReimbursementType);
+                patient.ReimbursementType = selectedContract?.ReimbursementType ?? "Non DRG";
+                patient.FinancialClass = selectedContract?.Fc ?? string.Empty;
+                patient.HealthPlan = selectedContract?.Insurance ?? string.Empty;
                 if (msDrgLookup.Items.Any(x => x.DrgNo == patient.DrgNo))
                     patient.ReimbursementType = "MS-DRG";
                 else if (aprDrgLookup.Items.Any(x => x.DrgNo == patient.DrgNo))
                     patient.ReimbursementType = "APR-DRG";
-                else
-                    patient.ReimbursementType = contracts.FirstOrDefault(x => x.Insurance == patient.FinancialClass)?.ReimbursementType ?? "Non DRG";
                 patient.ReviewStatus =
                    patient.ReimbursementType.ToLower().Contains("apr-drg")
                    || patient.ReimbursementType.ToLower().Contains("ms-drg")
@@ -50,7 +55,7 @@ namespace Zhealthcare.Service.Application.ImportFile
             {
                 if (!patientNos.Contains(patient.PatientNo))
                     patient.DischargeDate = DateTime.UtcNow.AddDays(-1);
-                await _mediator.Send(new UpdatePatientCommand(patient.Id, request.FacilityId, patient.Adapt<PatientUpdateDto>()), cancellationToken);
+                await _mediator.Send(new UpdatePatientCommand(patient.Id, request.FacilityId, patient.Adapt<PatientUpdateDto>(), _userContext.Name), cancellationToken);
             }
             return new ImportFileResponse(true, Enumerable.Empty<ErrorDetail>());
         }

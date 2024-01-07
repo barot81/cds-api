@@ -17,8 +17,12 @@ namespace Zhealthcare.Service.Controllers
     {
 
         private readonly IMediator _mediator;
-        public PatientsController(IMediator mediator)
-        => _mediator = mediator;
+        private readonly UserContext _userContext;
+        public PatientsController(IMediator mediator, UserContext userContext)
+        {
+            _mediator = mediator;
+            _userContext = userContext;
+        }
 
 
         // URL - https://localhost:44378/api/Patient type POST
@@ -44,7 +48,7 @@ namespace Zhealthcare.Service.Controllers
 
         [HttpPut("{FacilityId}/patients/{id}")]
         public async Task<IActionResult> Update(string FacilityId, Guid Id, [FromBody] PatientUpdateDto updatedPatient)
-        => Ok(await _mediator.Send(new UpdatePatientCommand(Id.ToString(), FacilityId, updatedPatient)));
+        => Ok(await _mediator.Send(new UpdatePatientCommand(Id.ToString(), FacilityId, updatedPatient, _userContext.Name)));
         
 
         [HttpPut("{FacilityId}/patients/{id}/comments")]

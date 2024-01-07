@@ -4,7 +4,7 @@ using Zhealthcare.Service.Domain.Entities;
 
 namespace Zhealthcare.Service.Application.Patients.Commands
 {
-    public record UpdatePatientCommand(string Id, string FacilityId, PatientUpdateDto PatientDto) : IRequest<Guid>
+    public record UpdatePatientCommand(string Id, string FacilityId, PatientUpdateDto PatientDto, string UpdatedBy) : IRequest<Guid>
     {
         public Patient MapPatient(Patient patient)
         {
@@ -28,6 +28,7 @@ namespace Zhealthcare.Service.Application.Patients.Commands
             patient.PatientClass = PatientDto.PatientClass;
             patient.ReviewStatus = PatientDto.ReviewStatus;
             patient.LastUpdatedDate = DateTime.UtcNow;
+            patient.LastUpdatedBy = UpdatedBy ?? string.Empty;
             patient.Type = typeof(Patient).Name;
             if (patient.FollowupComments == null)
                 patient.FollowupComments = new();

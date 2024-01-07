@@ -24,7 +24,6 @@ namespace Zhealthcare.Service.Controllers
         => Ok(await _mediator.Send(new PatientsUploadCommand(FacilityId, FileName)));
 
         [HttpPost("{FacilityId}/File/Patients")]
-        [AllowAnonymous]
         public async Task<IActionResult> ImportPatientsFromExcel(string FacilityId, [FromForm] IFormFile file)
         {
             try

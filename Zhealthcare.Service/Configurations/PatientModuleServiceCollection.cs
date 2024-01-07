@@ -1,8 +1,12 @@
 ﻿using Exxat.SyncJobs.RoleAccessJob.ServiceCollectionExntesion;
 using MediatR;
+using Newtonsoft.Json;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 using Zhealthcare.Service.Domain.Entities;
 using Zhealthcare.Service.Domain.Entities.Drg;
 using Zhealthcare.Service.Domain.Entities.Lookup;
+using Zhealthcare.Service.Models;
 
 namespace Zhealthcare.Service.Configurations
 {
@@ -13,9 +17,27 @@ namespace Zhealthcare.Service.Configurations
             IConfiguration config)
         => services
         .InitializePatientModuleMediator()
-        .InitializeCosmosRepository(config);
+        .InitializeCosmosRepository(config)
+        .AddUserContext();
 
-
+        private static IServiceCollection AddUserContext(this IServiceCollection services)
+        => services.AddScoped(provider =>
+            {
+                var contextAccessor = provider.GetRequiredService<IHttpContextAccessor>();
+                var userName = contextAccessor?.HttpContext?.User?.Claims?
+                    .FirstOrDefault(x => x.Type == "preferred_username")?.Value;
+                if (string.IsNullOrEmpty(userName))
+                {
+                    var token = contextAccessor?.HttpContext?.Request?.Headers?["Authorization"].ToString()?.Replace("Bearer ", "");
+                    var handler = new JwtSecurityTokenHandler();
+                    if (handler.ReadToken(token) is JwtSecurityToken jsonToken)
+                    {
+                        var preferredUsername = jsonToken.Claims.FirstOrDefault(claim => claim.Type == "preferred_username")?.Value;
+                        return new UserContext(string.IsNullOrEmpty(preferredUsername) ? string.Empty : preferredUsername);
+                    }
+                }
+                return new UserContext(userName ?? string.Empty);
+            });
 
         private static IServiceCollection InitializePatientModuleMediator(
             this IServiceCollection services)
